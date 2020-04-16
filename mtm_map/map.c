@@ -90,10 +90,12 @@ char* mapGetFirst(Map map){
 }
 
 char* mapGetNext(Map map) {
-    if(map == NULL) {
+    if(map == NULL || map->iterator == NULL) {
         return NULL;
     }
+
     *(map->iterator) = nodeGetNext(*(map->iterator)); //TODO: Check if this advances the iterator.
+
     return nodeGetKey(*(map->iterator));
 }
 
@@ -101,8 +103,6 @@ MapResult mapPut(Map map, const char* key, const char* data){
     if(key == NULL || data == NULL) {
         return MAP_NULL_ARGUMENT;
     }
-
-    printf("key: %s, data: %s", key, data); //DEBUGGING
 
     if(mapContains(map, key)) {
         map->iterator = &(map->list);
