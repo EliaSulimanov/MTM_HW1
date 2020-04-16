@@ -2,8 +2,6 @@
 #include <string.h>
 #include <assert.h>
 
-#include <stdio.h>
-
 #include "node.h"
 
 struct Node_t
@@ -39,11 +37,12 @@ Node nodeCreate(const char* key, const char* value, Node* next) {
 }
 
 void nodeDestroy(Node node) {
-    assert(node != NULL);
-    free(node->key);
-    free(node->value);
-    free(node->next); //Check if it not breaks the list.
-    free(node);
+    if(node != NULL) {
+        free(node->key);
+        free(node->value);
+        free(node->next); //Check if it not breaks the list.
+        free(node);
+    }
 }
 
 char* nodeGetKey(Node node) {
