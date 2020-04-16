@@ -1,7 +1,5 @@
 #include <stdlib.h>
 
-#include <stdio.h>
-
 #include "map.h"
 #include "node.h"
 
@@ -33,8 +31,9 @@ void mapDestroy(Map map) {
             nodeDestroy(map->list);
             map->size--;
         }
-        free(map->iterator);
-        free(map->list);
+        if(map->list != NULL) {
+            free(map->list);
+        }
         free(map);
     }
 }
