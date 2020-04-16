@@ -73,7 +73,7 @@ char* nodeGetValue(Node node){
 }
 
 Node nodeGetNext(Node node) {
-    if(node == NULL) {
+    if(node == NULL || node->next == NULL) {
         return NULL;
     }
     return *(node->next);
