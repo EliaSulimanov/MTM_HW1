@@ -1,17 +1,17 @@
 [
 {
   "directory": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build",
-  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/hw1.exe.dir/main.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c",
+  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g -g   -o CMakeFiles/hw1.exe.dir/main.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c",
   "file": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c"
 },
 {
   "directory": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build",
-  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c",
+  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g -g   -o CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c",
   "file": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c"
 },
 {
   "directory": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build",
-  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.c",
+  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g -g   -o CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.c",
   "file": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.c"
 }
 ]
