@@ -15,8 +15,6 @@ struct Node_t
 
 Node nodeCreate(const char* key, const char* value, Node* next) {
     
-    printf("key: %s, data: %s", key, value); //DEBUGGING
-
     Node node = malloc(sizeof(node));
     if(node == NULL) {
         return NULL;
