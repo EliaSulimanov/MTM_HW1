@@ -6,12 +6,42 @@
 /** Type for defining the node */
 typedef struct Node_t* Node;
 
+/**
+* nodeCreate: Allocates a new node.
+*
+* @param key - key to be added to the node.
+* @param value - value to be added to the node.
+* @param next - the next node to be pointed by this one.
+* @return
+* 	NULL - if allocations failed.
+* 	A new Node in case of success.
+*/
 Node nodeCreate(const char* key, const char* value, Node* next);
 
+/**
+* nodeDestroy: Deallocates an existing node. Clears all fields.
+*
+* @param node - Target node to be deallocated. If node is NULL nothing will be
+* 		done
+*/
 void nodeDestroy(Node node);
 
+/**
+* nodeGetKey: Returns the key saved on the node
+* @param node - The node which key is requested
+* @return
+* 	NULL if a NULL pointer was sent or memory allocation error occurred.
+* 	Otherwise the key of node.
+*/
 char* nodeGetKey(Node node);
 
+/**
+* nodeGetValue: Returns the value saved on the node
+* @param node - The node which value is requested
+* @return
+* 	NULL if a NULL pointer was sent or memory allocation error occurred.
+* 	Otherwise the value of node.
+*/
 char* nodeGetValue(Node node);
 
 Node nodeGetNext(Node node);
