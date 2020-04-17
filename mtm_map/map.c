@@ -16,14 +16,9 @@ Map mapCreate(){
         return NULL;
     }
 
-    /*Node dummy_first_node = nodeCreateDummyNode();
-    if(dummy_first_node == NULL) {
-        return NULL;
-    }*/
-
     //initialize empty map
     map->size = 0;
-    map->head = NULL; //dummy_first_node;
+    map->head = NULL;
     map->iterator = NULL;
 
     return map;
@@ -34,6 +29,47 @@ void mapDestroy(Map map){
         free(map->head);
         free(map);
     }
+}
+int mapGetSize(Map map){
+    if(map == NULL){
+        return -1;
+    }
+    return map->size;
+}
+
+/*Map mapCopy(Map map){
+    if(map == NULL){
+        return NULL;
+    }
+    Map copy = mapCreate();
+    if(copy == NULL){
+        return NULL;
+    }
+    char* iterator = (char*) mapGetFirst(map);
+    for(; iterator; iterator = mapGetNext(map)){
+        if(iterator != NULL){
+            
+        }
+    }
+    free(iterator);
+    return false;
+
+}*/
+
+bool mapContains(Map map, const char* key){
+    if(map == NULL || key == NULL){
+        return false;
+    }
+
+    char* iterator = (char*) mapGetFirst(map);
+    for(; iterator; iterator = mapGetNext(map)){
+        if(strcmp(iterator,key)){
+            free(iterator);
+            return true;
+        }
+    }
+    free(iterator);
+    return false;
 }
 
 MapResult mapRemove(Map map, const char* key) {
@@ -103,6 +139,13 @@ MapResult mapPut(Map map, const char* key, const char* data) {
         return MAP_NULL_ARGUMENT;
     }
 
+    if(mapContains(map, key)) {
+        if(nodeSetValue(map->iterator, data)){
+            return MAP_SUCCESS;
+        }
+        return MAP_OUT_OF_MEMORY;
+    }
+
     Node temp_head = map->head;
 
     map->head = nodeCreate(key, data, temp_head);
@@ -111,4 +154,32 @@ MapResult mapPut(Map map, const char* key, const char* data) {
     }
     map->size++;
     return MAP_SUCCESS;
+}
+
+char* mapGetFirst(Map map) {
+    if(map == NULL) {
+        return NULL;
+    }
+    if(map->size == 0) {
+        return NULL;
+    }
+    map->iterator = map->head;
+
+    //remember to free this key.
+    char* node_key = nodeGetKey(map->iterator);
+    return node_key;
+}
+
+char* mapGetNext(Map map) {
+    if(map == NULL) {
+        return NULL;
+    }
+    if(map->head == NULL) {
+        return NULL;
+    }
+    map->iterator = nodeGetNext(map->head);
+    if(map->iterator == NULL){
+        return NULL;
+    }
+    return nodeGetKey(map->iterator);
 }
