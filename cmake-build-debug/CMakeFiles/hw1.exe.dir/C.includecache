@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c
-stdlib.h
--
-stdio.h
--
-mtm_map/map.h
-C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.h
-
 C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c
 stdlib.h
 -
