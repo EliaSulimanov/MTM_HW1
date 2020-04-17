@@ -6,6 +6,9 @@
 int main() {
     Map map = mapCreate();
     mapPut(map, "key", "123456789");
+    mapPut(map, "key", "matam");
+    mapGetFirst(map);
+    mapGetNext(map);
     mapRemove(map, "key");
     mapDestroy(map);
     return 0;
