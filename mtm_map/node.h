@@ -1,6 +1,8 @@
 #ifndef NODE_H_
 #define NODE_H_
 
+#include <stdbool.h>
+
 /** Type for defining the node */
 typedef struct Node_t* Node;
 
@@ -24,7 +26,9 @@ Node nodeGetNext(Node node);
 
 void nodeSetNext(Node current_node, Node next_node);
 
-void nodeSetKey(Node node, char* key);
+bool nodeSetKey(Node node, const char* key);
+
+bool nodeSetValue(Node node, const char* value);
 
 void nodeDestroy(Node node);
 

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+
 #include <assert.h>
 
 #include "node.h"
@@ -61,13 +62,24 @@ char* nodeGetKey(Node node) {
     return key;
 }
 
-void nodeSetKey(Node node, char* key) {
+bool nodeSetKey(Node node, const char* key) {
     free(node->key);
     node->key = malloc(strlen(key) + 1);
     if(node->key == NULL) {
-        return;
+        return false;
     }
     strcpy(node->key, key);
+    return true;
+}
+
+bool nodeSetValue(Node node, const char* value) {
+    free(node->value);
+    node->value = malloc(strlen(value) + 1);
+    if(node->value == NULL) {
+        return false;
+    }
+    strcpy(node->value, value);
+    return true;
 }
 
 Node nodeGetNext(Node iterator) {
