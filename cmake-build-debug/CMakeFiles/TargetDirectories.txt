@@ -1,0 +1,3 @@
+C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/hw1.exe.dir
+C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/edit_cache.dir
