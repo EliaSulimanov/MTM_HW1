@@ -15,10 +15,17 @@ Map mapCreate(){
     if(map == NULL){
         return NULL;
     }
+
+    /*Node dummy_first_node = nodeCreateDummyNode();
+    if(dummy_first_node == NULL) {
+        return NULL;
+    }*/
+
     //initialize empty map
     map->size = 0;
-    map->head = NULL;
-    map->iterator = map->head;
+    map->head = NULL; //dummy_first_node;
+    map->iterator = NULL;
+
     return map;
 }
 
@@ -75,6 +82,7 @@ MapResult mapClear(Map map) {
     if(map == NULL){
         return MAP_NULL_ARGUMENT;
     }
+
     // Find next, delete head and move next to head
     Node temp = map->head;
     while(temp != NULL){
@@ -97,7 +105,7 @@ MapResult mapPut(Map map, const char* key, const char* data) {
 
     Node temp_head = map->head;
 
-    map->head = nodeCreate(key, data, &temp_head);
+    map->head = nodeCreate(key, data, temp_head);
     if(map->head == NULL) {
         return MAP_OUT_OF_MEMORY;
     }
