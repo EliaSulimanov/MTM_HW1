@@ -14,7 +14,9 @@ typedef struct Node_t* Node;
 * 	NULL - if allocations failed.
 * 	A new Node in case of success.
 */
-Node nodeCreate(const char* key, const char* value, Node* next);
+Node nodeCreate(const char* key, const char* value, Node next);
+
+Node nodeCreateDummyNode();
 
 char* nodeGetKey(Node node);
 

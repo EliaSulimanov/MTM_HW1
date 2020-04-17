@@ -8,10 +8,10 @@ struct Node_t
 {
     char *key;
     char *value;
-    Node *next;
+    Node next;
 };
 
-Node nodeCreate(const char* key, const char* value, Node* next) {
+Node nodeCreate(const char* key, const char* value, Node next) {
     Node node = malloc(sizeof(*node));
     if(node == NULL) {
         return NULL;
@@ -37,6 +37,18 @@ Node nodeCreate(const char* key, const char* value, Node* next) {
     return node;
 }
 
+Node nodeCreateDummyNode() {
+    Node node = malloc(sizeof(*node));
+    if(node == NULL) {
+        return NULL;
+    }
+    node->key = NULL;
+    node->value = NULL;
+    node->next = NULL;
+
+    return node;
+}
+
 char* nodeGetKey(Node node) {
     if(node == NULL) {
         return NULL;
@@ -58,25 +70,31 @@ void nodeSetKey(Node node, char* key) {
     strcpy(node->key, key);
 }
 
-Node nodeGetNext(Node node) {
-    if(node == NULL || node->next == NULL) {
+Node nodeGetNext(Node iterator) {
+    if(iterator == NULL) {
         return NULL;
     }
-    return *(node->next);
+
+    Node next_node = iterator->next;
+    iterator = next_node;
+
+    return next_node;
 }
 
 void nodeSetNext(Node current_node, Node next_node) {
     if(current_node == NULL) {
         return;
     }
-    *(current_node->next) = next_node;
+    current_node->next = next_node;
 }
 
 void nodeDestroy(Node node) {
     if(node == NULL) {
         return;
     }
+
     free(node->key);
     free(node->value);
+    node->next = NULL;
     free(node);
 }
