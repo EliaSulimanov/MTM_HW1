@@ -12,12 +12,11 @@ struct Node_t
 };
 
 Node nodeCreate(const char* key, const char* value, Node* next) {
-    
-    Node node = malloc(sizeof(node));
+    Node node = malloc(sizeof(*node));
     if(node == NULL) {
         return NULL;
     }
-    
+
     node->key = malloc(strlen(key) + 1);
     if(node->key == NULL) {
         free(node);
@@ -33,24 +32,16 @@ Node nodeCreate(const char* key, const char* value, Node* next) {
     }
     strcpy(node->value, value);
 
-    return node;
-}
+    node->next = next;
 
-void nodeDestroy(Node node) {
-    if(node != NULL) {
-        free(node->key);
-        free(node->value);
-        free(node->next); //Check if it not breaks the list.
-        free(node);
-    }
+    return node;
 }
 
 char* nodeGetKey(Node node) {
     if(node == NULL) {
         return NULL;
     }
-
-    char *key = malloc(strlen(node->key) + 1);
+    char* key = malloc(strlen(node->key) + 1);
     if(key == NULL) {
         return NULL;
     }
@@ -58,17 +49,13 @@ char* nodeGetKey(Node node) {
     return key;
 }
 
-char* nodeGetValue(Node node){
-    if(node == NULL) {
-        return NULL;
+void nodeSetKey(Node node, char* key) {
+    free(node->key);
+    node->key = malloc(strlen(key) + 1);
+    if(node->key == NULL) {
+        return;
     }
-    
-    char *value = malloc(strlen(node->value) + 1);
-    if(value == NULL) {
-        return NULL;
-    }
-    strcpy(value, node->value);
-    return value;
+    strcpy(node->key, key);
 }
 
 Node nodeGetNext(Node node) {
@@ -78,38 +65,18 @@ Node nodeGetNext(Node node) {
     return *(node->next);
 }
 
-bool nodeSetKey(Node node, const char* key){
-    assert(node->key != NULL);
-    char *temp= malloc(strlen(node->key) + 1);
-    if(temp == NULL) {
-        return false;
+void nodeSetNext(Node current_node, Node next_node) {
+    if(current_node == NULL) {
+        return;
     }
-    strcpy(temp, node->key);
-
-    node->key = malloc(strlen(key) + 1);
-    if(node->key == NULL) {
-        free(temp);
-        return false;
-    }
-    strcpy(node->key,key);
-    free(temp);
-    return true;
+    *(current_node->next) = next_node;
 }
 
-bool nodeSetValue(Node node, const char* value){
-    assert(node->value != NULL);
-    char *temp= malloc(strlen(node->value) + 1);
-    if(temp == NULL) {
-        return false;
+void nodeDestroy(Node node) {
+    if(node == NULL) {
+        return;
     }
-    strcpy(temp, node->value);
-
-    node->value = malloc(strlen(value) + 1);
-    if(node->value == NULL) {
-        free(temp);
-        return false;
-    }
-    strcpy(node->value,value);
-    free(temp);
-    return true;
+    free(node->key);
+    free(node->value);
+    free(node);
 }
