@@ -1,18 +1,12 @@
+#include <stdlib.h>
 #include <stdio.h>
+
 #include "mtm_map/map.h"
 
-int main()
-{
+int main() {
     Map map = mapCreate();
-    MapResult result = mapPut(map, "hi", "there");
-    
-    result = mapPut(map, "lalala", "World");
-    
-    result = mapPut(map, "hi", "over there");
-    
-    printf("MapResult: %d\n",result);
-    if(mapContains(map, "hi"))
-        printf("map size: %d", mapGetSize(map));
-
+    mapPut(map, "key", "123456789");
+    mapRemove(map, "key");
     mapDestroy(map);
+    return 0;
 }
