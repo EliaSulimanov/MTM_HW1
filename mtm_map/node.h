@@ -20,6 +20,8 @@ Node nodeCreate(const char* key, const char* value, Node next);
 
 char* nodeGetKey(Node node);
 
+char* nodeGetValue(Node node);
+
 Node nodeGetNext(Node node);
 
 void nodeSetNext(Node current_node, Node next_node);
