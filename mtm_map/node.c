@@ -38,16 +38,9 @@ Node nodeCreate(const char* key, const char* value, Node next) {
     return node;
 }
 
-Node nodeCreateDummyNode() {
-    Node node = malloc(sizeof(*node));
     if(node == NULL) {
         return NULL;
     }
-    node->key = NULL;
-    node->value = NULL;
-    node->next = NULL;
-
-    return node;
 }
 
 char* nodeGetKey(Node node) {
