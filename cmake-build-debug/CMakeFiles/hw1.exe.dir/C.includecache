@@ -6,19 +6,13 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c
+C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/q2.c
 stdlib.h
 -
-map.h
-C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.h
-node.h
-C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.h
-
-C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.h
-stdbool.h
+stdio.h
 -
 string.h
 -
-
-C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.h
+assert.h
+-
 

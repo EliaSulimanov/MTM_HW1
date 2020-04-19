@@ -77,18 +77,18 @@ include CMakeFiles/hw1.exe.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/hw1.exe.dir/flags.make
 
-CMakeFiles/hw1.exe.dir/main.c.obj: CMakeFiles/hw1.exe.dir/flags.make
-CMakeFiles/hw1.exe.dir/main.c.obj: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/hw1.exe.dir/main.c.obj"
-	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/hw1.exe.dir/main.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c
+CMakeFiles/hw1.exe.dir/tests/map_example_test.c.obj: CMakeFiles/hw1.exe.dir/flags.make
+CMakeFiles/hw1.exe.dir/tests/map_example_test.c.obj: ../tests/map_example_test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/hw1.exe.dir/tests/map_example_test.c.obj"
+	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/hw1.exe.dir/tests/map_example_test.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/map_example_test.c
 
-CMakeFiles/hw1.exe.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw1.exe.dir/main.c.i"
-	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c > CMakeFiles/hw1.exe.dir/main.c.i
+CMakeFiles/hw1.exe.dir/tests/map_example_test.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw1.exe.dir/tests/map_example_test.c.i"
+	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/map_example_test.c > CMakeFiles/hw1.exe.dir/tests/map_example_test.c.i
 
-CMakeFiles/hw1.exe.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw1.exe.dir/main.c.s"
-	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c -o CMakeFiles/hw1.exe.dir/main.c.s
+CMakeFiles/hw1.exe.dir/tests/map_example_test.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw1.exe.dir/tests/map_example_test.c.s"
+	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/map_example_test.c -o CMakeFiles/hw1.exe.dir/tests/map_example_test.c.s
 
 CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj: CMakeFiles/hw1.exe.dir/flags.make
 CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj: ../mtm_map/map.c
@@ -118,14 +118,14 @@ CMakeFiles/hw1.exe.dir/mtm_map/node.c.s: cmake_force
 
 # Object files for target hw1.exe
 hw1_exe_OBJECTS = \
-"CMakeFiles/hw1.exe.dir/main.c.obj" \
+"CMakeFiles/hw1.exe.dir/tests/map_example_test.c.obj" \
 "CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj" \
 "CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj"
 
 # External object files for target hw1.exe
 hw1_exe_EXTERNAL_OBJECTS =
 
-hw1.exe.exe: CMakeFiles/hw1.exe.dir/main.c.obj
+hw1.exe.exe: CMakeFiles/hw1.exe.dir/tests/map_example_test.c.obj
 hw1.exe.exe: CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj
 hw1.exe.exe: CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj
 hw1.exe.exe: CMakeFiles/hw1.exe.dir/build.make
