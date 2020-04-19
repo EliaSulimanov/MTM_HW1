@@ -18,8 +18,6 @@ typedef struct Node_t* Node;
 */
 Node nodeCreate(const char* key, const char* value, Node next);
 
-Node nodeCreateDummyNode();
-
 char* nodeGetKey(Node node);
 
 Node nodeGetNext(Node node);
