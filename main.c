@@ -10,6 +10,10 @@ int main() {
     mapGetFirst(map);
     mapGetNext(map);
     mapRemove(map, "key");
+
+    Map copy = mapCopy(map);
+    mapDestroy(copy);
+    
     mapDestroy(map);
     return 0;
 }
