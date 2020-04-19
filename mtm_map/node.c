@@ -38,21 +38,28 @@ Node nodeCreate(const char* key, const char* value, Node next) {
     return node;
 }
 
-    if(node == NULL) {
-        return NULL;
-    }
-}
-
 char* nodeGetKey(Node node) {
     if(node == NULL) {
         return NULL;
     }
-    char* key = malloc(strlen(node->key) + 1);
+    /*char* key = malloc(strlen(node->key) + 1);
     if(key == NULL) {
         return NULL;
     }
-    strcpy(key, node->key);
-    return key;
+    strcpy(key, node->key);*/
+    return node->key;
+}
+
+char* nodeGetValue(Node node) {
+    if(node == NULL) {
+        return NULL;
+    }
+    /*char* key = malloc(strlen(node->value) + 1);
+    if(value == NULL) {
+        return NULL;
+    }
+    strcpy(value, node->value);*/
+    return node->value;
 }
 
 bool nodeSetKey(Node node, const char* key) {
@@ -75,15 +82,12 @@ bool nodeSetValue(Node node, const char* value) {
     return true;
 }
 
-Node nodeGetNext(Node iterator) {
-    if(iterator == NULL) {
+Node nodeGetNext(Node node) {
+    if(node == NULL) {
         return NULL;
     }
 
-    Node next_node = iterator->next;
-    iterator = next_node;
-
-    return next_node;
+    return node->next;
 }
 
 void nodeSetNext(Node current_node, Node next_node) {
