@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "map.h"
 #include "node.h"
@@ -68,7 +69,7 @@ bool mapContains(Map map, const char* key){
 
     char* iterator = (char*) mapGetFirst(map);
     for(; iterator; iterator = mapGetNext(map)){
-        if(strcmp(iterator,key)){
+        if(strcmp(iterator,key) == 0){
             //free(iterator);
             return true;
         }
@@ -167,6 +168,7 @@ char* mapGet(Map map, const char* key){
     Node tmp = map->head;
     while(tmp != NULL){
         if(strcmp(nodeGetKey(tmp), key) == 0){
+            printf("map.c -> mapget: %s, %s\n", nodeGetKey(tmp), nodeGetValue(tmp));
             return nodeGetValue(tmp);
         }
         tmp = nodeGetNext(tmp);
