@@ -74,7 +74,25 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/q2.c">
+		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/election.c">
+			<Option target="hw1.exe"/>
+		</Unit>
+		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/election.h">
+			<Option target="hw1.exe"/>
+		</Unit>
+		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c">
+			<Option target="hw1.exe"/>
+		</Unit>
+		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c">
+			<Option target="hw1.exe"/>
+		</Unit>
+		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.h">
+			<Option target="hw1.exe"/>
+		</Unit>
+		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.c">
+			<Option target="hw1.exe"/>
+		</Unit>
+		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.h">
 			<Option target="hw1.exe"/>
 		</Unit>
 		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/CMakeLists.txt">

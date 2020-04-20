@@ -1,5 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/hw1.exe.dir/q2.c.obj"
+  "CMakeFiles/hw1.exe.dir/main.c.obj"
+  "CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj"
+  "CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj"
+  "CMakeFiles/hw1.exe.dir/election.c.obj"
   "hw1.exe.pdb"
   "hw1.exe.exe"
   "hw1.exe.exe.manifest"

@@ -125,32 +125,113 @@ hw1.exe/fast:
 	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/build
 .PHONY : hw1.exe/fast
 
-q2.obj: q2.c.obj
+election.obj: election.c.obj
 
-.PHONY : q2.obj
+.PHONY : election.obj
 
 # target to build an object file
-q2.c.obj:
-	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/q2.c.obj
-.PHONY : q2.c.obj
+election.c.obj:
+	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/election.c.obj
+.PHONY : election.c.obj
 
-q2.i: q2.c.i
+election.i: election.c.i
 
-.PHONY : q2.i
+.PHONY : election.i
 
 # target to preprocess a source file
-q2.c.i:
-	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/q2.c.i
-.PHONY : q2.c.i
+election.c.i:
+	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/election.c.i
+.PHONY : election.c.i
 
-q2.s: q2.c.s
+election.s: election.c.s
 
-.PHONY : q2.s
+.PHONY : election.s
 
 # target to generate assembly for a file
-q2.c.s:
-	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/q2.c.s
-.PHONY : q2.c.s
+election.c.s:
+	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/election.c.s
+.PHONY : election.c.s
+
+main.obj: main.c.obj
+
+.PHONY : main.obj
+
+# target to build an object file
+main.c.obj:
+	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/main.c.obj
+.PHONY : main.c.obj
+
+main.i: main.c.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.c.i:
+	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/main.c.i
+.PHONY : main.c.i
+
+main.s: main.c.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.c.s:
+	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/main.c.s
+.PHONY : main.c.s
+
+mtm_map/map.obj: mtm_map/map.c.obj
+
+.PHONY : mtm_map/map.obj
+
+# target to build an object file
+mtm_map/map.c.obj:
+	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj
+.PHONY : mtm_map/map.c.obj
+
+mtm_map/map.i: mtm_map/map.c.i
+
+.PHONY : mtm_map/map.i
+
+# target to preprocess a source file
+mtm_map/map.c.i:
+	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/mtm_map/map.c.i
+.PHONY : mtm_map/map.c.i
+
+mtm_map/map.s: mtm_map/map.c.s
+
+.PHONY : mtm_map/map.s
+
+# target to generate assembly for a file
+mtm_map/map.c.s:
+	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/mtm_map/map.c.s
+.PHONY : mtm_map/map.c.s
+
+mtm_map/node.obj: mtm_map/node.c.obj
+
+.PHONY : mtm_map/node.obj
+
+# target to build an object file
+mtm_map/node.c.obj:
+	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj
+.PHONY : mtm_map/node.c.obj
+
+mtm_map/node.i: mtm_map/node.c.i
+
+.PHONY : mtm_map/node.i
+
+# target to preprocess a source file
+mtm_map/node.c.i:
+	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/mtm_map/node.c.i
+.PHONY : mtm_map/node.c.i
+
+mtm_map/node.s: mtm_map/node.c.s
+
+.PHONY : mtm_map/node.s
+
+# target to generate assembly for a file
+mtm_map/node.c.s:
+	$(MAKE) -f CMakeFiles\hw1.exe.dir\build.make CMakeFiles/hw1.exe.dir/mtm_map/node.c.s
+.PHONY : mtm_map/node.c.s
 
 # Help Target
 help:
@@ -161,9 +242,18 @@ help:
 	@echo ... rebuild_cache
 	@echo ... hw1.exe
 	@echo ... edit_cache
-	@echo ... q2.obj
-	@echo ... q2.i
-	@echo ... q2.s
+	@echo ... election.obj
+	@echo ... election.i
+	@echo ... election.s
+	@echo ... main.obj
+	@echo ... main.i
+	@echo ... main.s
+	@echo ... mtm_map/map.obj
+	@echo ... mtm_map/map.i
+	@echo ... mtm_map/map.s
+	@echo ... mtm_map/node.obj
+	@echo ... mtm_map/node.i
+	@echo ... mtm_map/node.s
 .PHONY : help
 
 

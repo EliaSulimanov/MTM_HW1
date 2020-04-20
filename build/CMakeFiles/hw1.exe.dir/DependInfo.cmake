@@ -4,9 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/election.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build/CMakeFiles/hw1.exe.dir/election.c.obj"
+  "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build/CMakeFiles/hw1.exe.dir/main.c.obj"
   "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build/CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj"
   "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build/CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj"
-  "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/map_example_test.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build/CMakeFiles/hw1.exe.dir/tests/map_example_test.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

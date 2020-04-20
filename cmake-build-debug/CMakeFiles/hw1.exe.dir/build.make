@@ -59,32 +59,77 @@ include CMakeFiles/hw1.exe.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/hw1.exe.dir/flags.make
 
-CMakeFiles/hw1.exe.dir/q2.c.obj: CMakeFiles/hw1.exe.dir/flags.make
-CMakeFiles/hw1.exe.dir/q2.c.obj: ../q2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/hw1.exe.dir/q2.c.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\hw1.exe.dir\q2.c.obj   -c C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\q2.c
+CMakeFiles/hw1.exe.dir/main.c.obj: CMakeFiles/hw1.exe.dir/flags.make
+CMakeFiles/hw1.exe.dir/main.c.obj: ../main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/hw1.exe.dir/main.c.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\hw1.exe.dir\main.c.obj   -c C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\main.c
 
-CMakeFiles/hw1.exe.dir/q2.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw1.exe.dir/q2.c.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\q2.c > CMakeFiles\hw1.exe.dir\q2.c.i
+CMakeFiles/hw1.exe.dir/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw1.exe.dir/main.c.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\main.c > CMakeFiles\hw1.exe.dir\main.c.i
 
-CMakeFiles/hw1.exe.dir/q2.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw1.exe.dir/q2.c.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\q2.c -o CMakeFiles\hw1.exe.dir\q2.c.s
+CMakeFiles/hw1.exe.dir/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw1.exe.dir/main.c.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\main.c -o CMakeFiles\hw1.exe.dir\main.c.s
+
+CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj: CMakeFiles/hw1.exe.dir/flags.make
+CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj: ../mtm_map/map.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\hw1.exe.dir\mtm_map\map.c.obj   -c C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\mtm_map\map.c
+
+CMakeFiles/hw1.exe.dir/mtm_map/map.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw1.exe.dir/mtm_map/map.c.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\mtm_map\map.c > CMakeFiles\hw1.exe.dir\mtm_map\map.c.i
+
+CMakeFiles/hw1.exe.dir/mtm_map/map.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw1.exe.dir/mtm_map/map.c.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\mtm_map\map.c -o CMakeFiles\hw1.exe.dir\mtm_map\map.c.s
+
+CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj: CMakeFiles/hw1.exe.dir/flags.make
+CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj: ../mtm_map/node.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\hw1.exe.dir\mtm_map\node.c.obj   -c C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\mtm_map\node.c
+
+CMakeFiles/hw1.exe.dir/mtm_map/node.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw1.exe.dir/mtm_map/node.c.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\mtm_map\node.c > CMakeFiles\hw1.exe.dir\mtm_map\node.c.i
+
+CMakeFiles/hw1.exe.dir/mtm_map/node.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw1.exe.dir/mtm_map/node.c.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\mtm_map\node.c -o CMakeFiles\hw1.exe.dir\mtm_map\node.c.s
+
+CMakeFiles/hw1.exe.dir/election.c.obj: CMakeFiles/hw1.exe.dir/flags.make
+CMakeFiles/hw1.exe.dir/election.c.obj: ../election.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/hw1.exe.dir/election.c.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\hw1.exe.dir\election.c.obj   -c C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\election.c
+
+CMakeFiles/hw1.exe.dir/election.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw1.exe.dir/election.c.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\election.c > CMakeFiles\hw1.exe.dir\election.c.i
+
+CMakeFiles/hw1.exe.dir/election.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw1.exe.dir/election.c.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\election.c -o CMakeFiles\hw1.exe.dir\election.c.s
 
 # Object files for target hw1.exe
 hw1_exe_OBJECTS = \
-"CMakeFiles/hw1.exe.dir/q2.c.obj"
+"CMakeFiles/hw1.exe.dir/main.c.obj" \
+"CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj" \
+"CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj" \
+"CMakeFiles/hw1.exe.dir/election.c.obj"
 
 # External object files for target hw1.exe
 hw1_exe_EXTERNAL_OBJECTS =
 
-hw1.exe.exe: CMakeFiles/hw1.exe.dir/q2.c.obj
+hw1.exe.exe: CMakeFiles/hw1.exe.dir/main.c.obj
+hw1.exe.exe: CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj
+hw1.exe.exe: CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj
+hw1.exe.exe: CMakeFiles/hw1.exe.dir/election.c.obj
 hw1.exe.exe: CMakeFiles/hw1.exe.dir/build.make
 hw1.exe.exe: CMakeFiles/hw1.exe.dir/linklibs.rsp
 hw1.exe.exe: CMakeFiles/hw1.exe.dir/objects1.rsp
 hw1.exe.exe: CMakeFiles/hw1.exe.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable hw1.exe.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ielia\Desktop\Technion\MATAM\homework\ex1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable hw1.exe.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\hw1.exe.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
