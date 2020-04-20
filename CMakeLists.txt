@@ -9,4 +9,5 @@ set(MTM_FLAGS_RELEASE "${MTM_FLAGS_DEBUG} -DNDEBUG")
 
 set(CMAKE_C_FLAGS ${MTM_FLAGS_DEBUG})
 
-add_executable(hw1.exe tests/map_example_test.c mtm_map/map.c mtm_map/map.h mtm_map/node.c mtm_map/node.h)
+#add_executable(hw1.exe tests/map_example_test.c mtm_map/map.c mtm_map/map.h mtm_map/node.c mtm_map/node.h)
+add_executable(hw1.exe main.c mtm_map/map.c mtm_map/map.h mtm_map/node.c mtm_map/node.h election.c election.h)
