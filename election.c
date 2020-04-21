@@ -11,47 +11,6 @@ struct election_t {
     Map votes;
 };
 
-/*
-struct Map_t
-{
-    int size;
-    Node head;
-    Node iterator;
-};
-
-struct Node_t
-{
-    char *key;
-    char *value;
-    Node next;
-};
-
-key:"tribe id"
-value:"area id;000;area id2;00;areaid3;60" int a= 00000000; => a=0; json javascript
-
-        votes
-        |
- head:  |_"tribe_one"
-        |_"area id;000;area id2;00;areaid3;60"
-        |___
-            |_"tribe_two"
-            |_"area id;000;area id2;00;areaid3;60"
-            |_NULL
- size: 2
-
-
-
-        tirbe_votes
-        |
- head:  |_"area_one"
-        |_"50"
-        |___
-            |_"area_two"
-            |_"1000"
-            |_NULL
- size: 2
-*/
-
 static int getNumberOfCharOccurrencesInString(char *str, char char_to_search) {
     int occurrences = 0;
     char* str_iterator = str;
