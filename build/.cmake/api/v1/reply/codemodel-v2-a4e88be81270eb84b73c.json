@@ -37,9 +37,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "hw1.exe::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-hw1.exe-Debug-44e369f858b76b86e2b3.json",
-					"name" : "hw1.exe",
+					"id" : "hw1::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hw1-Debug-6404b56eeee0eded38d1.json",
+					"name" : "hw1",
 					"projectIndex" : 0
 				}
 			]

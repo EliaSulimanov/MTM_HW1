@@ -76,17 +76,6 @@ CMAKE_BINARY_DIR = C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:/Program Files/CMake/bin/cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -97,6 +86,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	"C:/Program Files/CMake/bin/cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -131,17 +131,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named hw1.exe
+# Target rules for targets named hw1
 
 # Build rule for target.
-hw1.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 hw1.exe
-.PHONY : hw1.exe
+hw1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hw1
+.PHONY : hw1
 
 # fast build rule for target.
-hw1.exe/fast:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/build
-.PHONY : hw1.exe/fast
+hw1/fast:
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/build
+.PHONY : hw1/fast
 
 election.obj: election.c.obj
 
@@ -149,7 +149,7 @@ election.obj: election.c.obj
 
 # target to build an object file
 election.c.obj:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/election.c.obj
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/election.c.obj
 .PHONY : election.c.obj
 
 election.i: election.c.i
@@ -158,7 +158,7 @@ election.i: election.c.i
 
 # target to preprocess a source file
 election.c.i:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/election.c.i
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/election.c.i
 .PHONY : election.c.i
 
 election.s: election.c.s
@@ -167,7 +167,7 @@ election.s: election.c.s
 
 # target to generate assembly for a file
 election.c.s:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/election.c.s
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/election.c.s
 .PHONY : election.c.s
 
 main.obj: main.c.obj
@@ -176,7 +176,7 @@ main.obj: main.c.obj
 
 # target to build an object file
 main.c.obj:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/main.c.obj
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/main.c.obj
 .PHONY : main.c.obj
 
 main.i: main.c.i
@@ -185,7 +185,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/main.c.i
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -194,62 +194,8 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/main.c.s
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/main.c.s
 .PHONY : main.c.s
-
-mtm_map/map.obj: mtm_map/map.c.obj
-
-.PHONY : mtm_map/map.obj
-
-# target to build an object file
-mtm_map/map.c.obj:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/mtm_map/map.c.obj
-.PHONY : mtm_map/map.c.obj
-
-mtm_map/map.i: mtm_map/map.c.i
-
-.PHONY : mtm_map/map.i
-
-# target to preprocess a source file
-mtm_map/map.c.i:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/mtm_map/map.c.i
-.PHONY : mtm_map/map.c.i
-
-mtm_map/map.s: mtm_map/map.c.s
-
-.PHONY : mtm_map/map.s
-
-# target to generate assembly for a file
-mtm_map/map.c.s:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/mtm_map/map.c.s
-.PHONY : mtm_map/map.c.s
-
-mtm_map/node.obj: mtm_map/node.c.obj
-
-.PHONY : mtm_map/node.obj
-
-# target to build an object file
-mtm_map/node.c.obj:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/mtm_map/node.c.obj
-.PHONY : mtm_map/node.c.obj
-
-mtm_map/node.i: mtm_map/node.c.i
-
-.PHONY : mtm_map/node.i
-
-# target to preprocess a source file
-mtm_map/node.c.i:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/mtm_map/node.c.i
-.PHONY : mtm_map/node.c.i
-
-mtm_map/node.s: mtm_map/node.c.s
-
-.PHONY : mtm_map/node.s
-
-# target to generate assembly for a file
-mtm_map/node.c.s:
-	$(MAKE) -f CMakeFiles/hw1.exe.dir/build.make CMakeFiles/hw1.exe.dir/mtm_map/node.c.s
-.PHONY : mtm_map/node.c.s
 
 # Help Target
 help:
@@ -259,19 +205,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... hw1.exe"
+	@echo "... hw1"
 	@echo "... election.obj"
 	@echo "... election.i"
 	@echo "... election.s"
 	@echo "... main.obj"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... mtm_map/map.obj"
-	@echo "... mtm_map/map.i"
-	@echo "... mtm_map/map.s"
-	@echo "... mtm_map/node.obj"
-	@echo "... mtm_map/node.i"
-	@echo "... mtm_map/node.s"
 .PHONY : help
 
 
