@@ -74,17 +74,13 @@ char* mapToString(Map map) {
     char *string_map_head = string_map;
 
     MAP_FOREACH(key_iterator, copy){
-        strcpy(string_map, key_iterator);
-        string_map = string_map + strlen(key_iterator); // +-1
-        strcpy(string_map, "-");
-        string_map = string_map + 1;
-        
-        strcpy(string_map, mapGet(copy, key_iterator));
-        printf("get: %s\n", mapGet(copy, key_iterator));
-        printf("key: %s\n", key_iterator);
-        string_map = string_map + strlen(mapGet(copy, key_iterator)); // +-1
-        strcpy(string_map, ";");
-        string_map = string_map + 1;
+        //Block that get the key of the element in the map and add it to map string
+        addKeyToMapString(string_map_iterator, key_iterator, "-");
+        string_map_iterator = string_map_iterator + strlen(key_iterator) + 1;
+
+        //Block that get the data of the element in the map and add it to map string
+        addKeyToMapString(string_map_iterator, mapGet(copy, key_iterator), ";");
+        string_map_iterator = string_map_iterator + strlen(mapGet(copy, key_iterator)) + 1;
     }
     
     mapDestroy(copy);
