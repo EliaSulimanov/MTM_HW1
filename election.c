@@ -240,3 +240,14 @@ Election electionCreate() {
 
     return election;
 }
+
+void electionDestroy(Election election) {
+    if(election == NULL) {
+        return;
+    }
+    mapDestroy(election->votes);
+    mapDestroy(election->areas);
+    mapDestroy(election->tribes);
+
+    free(election);
+}
