@@ -251,3 +251,31 @@ void electionDestroy(Election election) {
 
     free(election);
 }
+
+ElectionResult electionAddTribe (Election election, int tribe_id, const char* tribe_name) {
+    ElectionResult arguments_check = checkElectionIdNameAgruments(election, tribe_id, tribe_name);
+    if(arguments_check != ELECTION_SUCCESS) {
+        return arguments_check;
+    }
+
+    ElectionResult tribe_exist_check = checkIsTribeExist(election, tribe_id);
+    if(tribe_exist_check != ELECTION_SUCCESS) {
+        return tribe_exist_check;
+    }
+
+    char *tribe_id_string = intToString(tribe_id);
+    if(tribe_id_string == NULL) {
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    assert(election->tribes != NULL);
+    MapResult map_put_result = mapPut(election->tribes, tribe_id_string, tribe_name);
+    free(tribe_id_string);
+
+    if(map_put_result == MAP_OUT_OF_MEMORY) {
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    return ELECTION_SUCCESS;
+}
+
