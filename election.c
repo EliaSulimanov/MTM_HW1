@@ -90,6 +90,41 @@ char* mapToString(Map map) {
     mapDestroy(copy);
 
     return string_map_head;
+static Map stringToMap(char* string_map){
+    Map map = mapCreate();
+    if(map == NULL) {
+        return NULL;
+    }
+
+    int start_index = 0;
+    int i = getNumberOfCharOccurrencesInString(string_map, ';'); //find out how many elements in the string map.
+    while(i > 0) {
+
+        //allocate memory for the key string then initialize it
+        int key_length = getKeyLengthInMapString(string_map, start_index);
+        char *key = malloc(key_length + 1);
+        if(key == NULL) {
+            mapDestroy(map);
+        }
+        getKeyFromMapString(key, string_map + start_index);
+        start_index += key_length + 1;
+
+        //allocate memory for the data string then initialize it
+        key_length = getKeyLengthInMapString(string_map, start_index);
+        char *data = malloc(key_length + 1);
+        if(data == NULL) {
+            free(key);
+            mapDestroy(map);
+        }
+        getKeyFromMapString(data, string_map + start_index);
+        start_index += key_length + 1;
+
+        mapPut(map, key, data);
+        free(key);
+        free(data);
+        i--;
+    }
+    return map;
 }
 
 /*static Map stringToMap(char* jason){
