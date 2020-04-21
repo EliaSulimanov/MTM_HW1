@@ -279,3 +279,29 @@ ElectionResult electionAddTribe (Election election, int tribe_id, const char* tr
     return ELECTION_SUCCESS;
 }
 
+ElectionResult electionAddArea(Election election, int area_id, const char* area_name) {
+    ElectionResult arguments_check = checkElectionIdNameAgruments(election, area_id, area_name);
+    if(arguments_check != ELECTION_SUCCESS) {
+        return arguments_check;
+    }
+
+    ElectionResult area_exist_check = checkIsAreaExist(election, area_id);
+    if(area_exist_check != ELECTION_SUCCESS) {
+        return area_exist_check;
+    }
+
+    char *area_id_string = intToString(area_id);
+    if(area_id_string == NULL) {
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    assert(election->areas != NULL);
+    MapResult map_put_result = mapPut(election->areas, area_id_string, area_name);
+    free(area_id_string);
+
+    if(map_put_result == MAP_OUT_OF_MEMORY) {
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    return ELECTION_SUCCESS;
+}
