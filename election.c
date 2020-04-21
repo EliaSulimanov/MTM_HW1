@@ -52,7 +52,6 @@ value:"area id;000;area id2;00;areaid3;60" int a= 00000000; => a=0; json javascr
  size: 2
 */
 
-char* mapToString(Map map) {
 static int getNumberOfCharOccurrencesInString(char *str, char char_to_search) {
     int occurrences = 0;
     char* str_iterator = str;
@@ -65,6 +64,7 @@ static int getNumberOfCharOccurrencesInString(char *str, char char_to_search) {
     }
     return occurrences;
 }
+
 static int getKeyLengthInMapString(char *str, int start_index) {
     int length = 0;
     char* str_iterator = str + start_index;
@@ -74,6 +74,7 @@ static int getKeyLengthInMapString(char *str, int start_index) {
     }
     return length;
 }
+
 static void getKeyFromMapString(char *key, char *str) {
     char* str_iterator = str;
     char* key_iterator = key;
@@ -84,31 +85,39 @@ static void getKeyFromMapString(char *key, char *str) {
     }
     *key_iterator = '\0';
 }
+
 static void addKeyToMapString(char *string_map_iterator, char* iterator, char* terminator) {
     strcpy(string_map_iterator, iterator);
     string_map_iterator = string_map_iterator + strlen(iterator);
     strcpy(string_map_iterator, terminator);
 }
+
+static char* mapToString(Map map) {
     if(map == NULL) {
         return NULL;
     }
-    Map copy = mapCopy(map);
+
+    Map copy = mapCopy(map); //create copy of the given map so the given map data stay safe
     if(copy == NULL) {
         return NULL;
     }
+
     int size_needed_for_string = 0;
-    
+
+    //calculate the size that will be needed for the map string
     MAP_FOREACH(key_iterator, copy) {
         size_needed_for_string += strlen(key_iterator) + 1 //key length + ';'
         + strlen(mapGet(copy, key_iterator)) + 1; //value length + ';'
     }
-    
-    char *string_map = malloc(size_needed_for_string + 1); //NULL iterator
+
+    char *string_map = malloc(size_needed_for_string + 1); //NULL terminator
     if(string_map == NULL) {
         return NULL;
     }
-    char *string_map_head = string_map;
+    char *string_map_iterator = string_map;
 
+    /*copy each element in the map to the string, using an specific syntax so we can break it down
+    when we make map out of this string.*/
     MAP_FOREACH(key_iterator, copy){
         //Block that get the key of the element in the map and add it to map string
         addKeyToMapString(string_map_iterator, key_iterator, "-");
@@ -118,10 +127,14 @@ static void addKeyToMapString(char *string_map_iterator, char* iterator, char* t
         addKeyToMapString(string_map_iterator, mapGet(copy, key_iterator), ";");
         string_map_iterator = string_map_iterator + strlen(mapGet(copy, key_iterator)) + 1;
     }
-    
+
+    *string_map_iterator = '\0'; //Terminate the map string
+
     mapDestroy(copy);
 
-    return string_map_head;
+    return string_map;
+}
+
 static Map stringToMap(char* string_map){
     Map map = mapCreate();
     if(map == NULL) {
@@ -159,8 +172,3 @@ static Map stringToMap(char* string_map){
     return map;
 }
 
-/*static Map stringToMap(char* jason){
-    
-    //mapCreate(copy);
-    
-}*/
