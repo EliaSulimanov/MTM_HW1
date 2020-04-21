@@ -131,3 +131,13 @@ static Map stringToMap(char* string_map){
     return map;
 }
 
+static bool checkName(const char* name) {
+    const char *name_iterator = name;
+    while(*name_iterator != '\0') {
+        if((*name_iterator < 'a' || *name_iterator > 'z') && (*name_iterator != ' ')){
+            return false;
+        }
+        name_iterator++;
+    }
+    return true;
+}
