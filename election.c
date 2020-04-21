@@ -3,7 +3,6 @@
 
 #include "election.h"
 #include "mtm_map/map.h"
-#include "mtm_map/node.h"
 
 struct election_t {
     Map tribes;
