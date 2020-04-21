@@ -84,6 +84,11 @@ static void getKeyFromMapString(char *key, char *str) {
     }
     *key_iterator = '\0';
 }
+static void addKeyToMapString(char *string_map_iterator, char* iterator, char* terminator) {
+    strcpy(string_map_iterator, iterator);
+    string_map_iterator = string_map_iterator + strlen(iterator);
+    strcpy(string_map_iterator, terminator);
+}
     if(map == NULL) {
         return NULL;
     }
