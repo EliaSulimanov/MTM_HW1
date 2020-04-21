@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 
 #include "map.h"
 #include "node.h"
@@ -48,7 +47,9 @@ Map mapCopy(Map map){
     if(copy == NULL){
         return NULL;
     }
-    
+
+    map->iterator = map->head;
+
     MapResult tmp = MAP_NULL_ARGUMENT;
     while(map->iterator != NULL){
         tmp = mapPut(copy, nodeGetKey(map->iterator),nodeGetValue(map->iterator));
@@ -59,6 +60,8 @@ Map mapCopy(Map map){
         map->iterator = nodeGetNext(map->iterator);
     }
     copy->iterator = copy->head;
+    map->iterator = map->head;
+
     return copy;
 }
 
@@ -67,10 +70,8 @@ bool mapContains(Map map, const char* key){
         return false;
     }
 
-    char* iterator = (char*) mapGetFirst(map);
-    for(; iterator; iterator = mapGetNext(map)){
+    MAP_FOREACH(iterator, map) {
         if(strcmp(iterator,key) == 0){
-            //free(iterator);
             return true;
         }
     }
@@ -156,6 +157,7 @@ MapResult mapPut(Map map, const char* key, const char* data) {
     if(map->head == NULL) {
         return MAP_OUT_OF_MEMORY;
     }
+
     map->size++;
     return MAP_SUCCESS;
 }
@@ -168,7 +170,6 @@ char* mapGet(Map map, const char* key){
     Node tmp = map->head;
     while(tmp != NULL){
         if(strcmp(nodeGetKey(tmp), key) == 0){
-            printf("map.c -> mapget: %s, %s\n", nodeGetKey(tmp), nodeGetValue(tmp));
             return nodeGetValue(tmp);
         }
         tmp = nodeGetNext(tmp);
@@ -197,7 +198,8 @@ char* mapGetNext(Map map) {
     if(map->head == NULL) {
         return NULL;
     }
-    map->iterator = nodeGetNext(map->head);
+    //map->iterator = nodeGetNext(map->head);
+    map->iterator = nodeGetNext(map->iterator);
     if(map->iterator == NULL){
         return NULL;
     }
