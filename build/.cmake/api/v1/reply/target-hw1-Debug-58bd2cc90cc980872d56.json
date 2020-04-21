@@ -38,7 +38,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-std=c99 --pedantic-errors -Wall -g -g  "
+					"fragment" : "-std=c99 --pedantic-errors -Wall -Werror -g -g  "
 				}
 			],
 			"language" : "C",
@@ -57,7 +57,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-std=c99 --pedantic-errors -Wall -g -g",
+				"fragment" : "-std=c99 --pedantic-errors -Wall -Werror -g -g",
 				"role" : "flags"
 			},
 			{
@@ -96,7 +96,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "tests/map_example_test.c",
+			"path" : "main.c",
 			"sourceGroupIndex" : 0
 		},
 		{

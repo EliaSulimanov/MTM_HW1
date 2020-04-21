@@ -4,7 +4,6 @@
 CMakeFiles/hw1.dir/election.c.obj: ../election.c
 CMakeFiles/hw1.dir/election.c.obj: ../election.h
 CMakeFiles/hw1.dir/election.c.obj: ../mtm_map/map.h
-CMakeFiles/hw1.dir/election.c.obj: ../mtm_map/node.h
 
 CMakeFiles/hw1.dir/main.c.obj: ../election.h
 CMakeFiles/hw1.dir/main.c.obj: ../main.c
