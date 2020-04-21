@@ -65,6 +65,15 @@ static int getNumberOfCharOccurrencesInString(char *str, char char_to_search) {
     }
     return occurrences;
 }
+static int getKeyLengthInMapString(char *str, int start_index) {
+    int length = 0;
+    char* str_iterator = str + start_index;
+    while(*str_iterator != '-' && *str_iterator != ';') {
+        length++;
+        str_iterator++;
+    }
+    return length;
+}
     if(map == NULL) {
         return NULL;
     }
