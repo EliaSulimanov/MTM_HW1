@@ -6,14 +6,10 @@
 #include "election.h"
 
 int main() {
-    Map map = mapCreate();
+    Election election = electionCreate();
 
-    mapPut(map, "area1", "40050");
-    mapPut(map, "aea2", "10");
+    electionAddTribe(election, 12, "tribe one");
+    electionAddArea(election, 8, "area one");
 
-    mapPut(map, "ar", "3545464");
-    mapPut(map, "area01010100", "7");
-
-    mapDestroy(map);
-
+    electionDestroy(election);
 }
