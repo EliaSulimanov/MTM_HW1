@@ -180,3 +180,17 @@ static ElectionResult checkIsTribeExist(Election election, int id) {
     return ELECTION_SUCCESS;
 }
 
+static ElectionResult checkIsAreaExist(Election election, int id) {
+    char *id_string = intToString(id);
+    if(id_string == NULL) {
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    if(mapContains(election->areas, id_string)) {
+        free(id_string);
+        return ELECTION_AREA_ALREADY_EXIST;
+    }
+    free(id_string);
+    return ELECTION_SUCCESS;
+}
+
