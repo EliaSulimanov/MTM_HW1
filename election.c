@@ -156,3 +156,13 @@ static int getNumberOfCharsInId(int id) {
     return length;
 }
 
+static char* intToString(int number) {
+    int length = getNumberOfCharsInId(number);
+    char* str = malloc(length + 1);
+    if(str == NULL) {
+        return NULL;
+    }
+    sprintf(str, "%d", number); //check if it adds null terminator at the end, or if it does the job
+    return str;
+}
+
