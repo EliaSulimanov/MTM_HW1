@@ -53,6 +53,18 @@ value:"area id;000;area id2;00;areaid3;60" int a= 00000000; => a=0; json javascr
 */
 
 char* mapToString(Map map) {
+static int getNumberOfCharOccurrencesInString(char *str, char char_to_search) {
+    int occurrences = 0;
+    char* str_iterator = str;
+    while(*str_iterator != '\0')
+    {
+        if(*str_iterator == char_to_search) {
+            occurrences++;
+        }
+        str_iterator++;
+    }
+    return occurrences;
+}
     if(map == NULL) {
         return NULL;
     }
