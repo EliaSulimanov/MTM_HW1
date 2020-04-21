@@ -74,6 +74,16 @@ static int getKeyLengthInMapString(char *str, int start_index) {
     }
     return length;
 }
+static void getKeyFromMapString(char *key, char *str) {
+    char* str_iterator = str;
+    char* key_iterator = key;
+    while (*str_iterator != '-' && *str_iterator != ';') {
+        *key_iterator = *str_iterator;
+        key_iterator++;
+        str_iterator++;
+    }
+    *key_iterator = '\0';
+}
     if(map == NULL) {
         return NULL;
     }
