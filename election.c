@@ -166,3 +166,17 @@ static char* intToString(int number) {
     return str;
 }
 
+static ElectionResult checkIsTribeExist(Election election, int id) {
+    char *id_string = intToString(id);
+    if(id_string == NULL) {
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    if(mapContains(election->tribes, id_string)) {
+        free(id_string);
+        return ELECTION_TRIBE_ALREADY_EXIST;
+    }
+    free(id_string);
+    return ELECTION_SUCCESS;
+}
+
