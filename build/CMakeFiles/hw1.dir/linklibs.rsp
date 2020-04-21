@@ -1,1 +1,1 @@
-  -LC:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/.  -Wl,-Bstatic -lmap -Wl,-Bdynamic -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+ -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
