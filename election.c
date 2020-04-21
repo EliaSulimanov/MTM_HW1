@@ -140,3 +140,19 @@ static bool checkName(const char* name) {
     }
     return true;
 }
+
+static int getNumberOfCharsInId(int id) {
+    int length = 0;
+
+    if(id % 10 == 0) {
+        id = id + 1;
+    }
+
+    while(id % 10 != 0) {
+        length++;
+        id /= 10;
+    }
+
+    return length;
+}
+
