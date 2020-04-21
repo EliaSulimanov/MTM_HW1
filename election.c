@@ -194,3 +194,19 @@ static ElectionResult checkIsAreaExist(Election election, int id) {
     return ELECTION_SUCCESS;
 }
 
+static ElectionResult checkElectionIdNameAgruments(Election election, int id, const char* name) {
+    if(election == NULL || name == NULL) {
+        return ELECTION_NULL_ARGUMENT;
+    }
+    
+    if(id < 0) {
+        return ELECTION_INVALID_ID;
+    }
+
+    if(!checkName(name)) {
+        return ELECTION_INVALID_NAME;
+    }
+
+    return ELECTION_SUCCESS;
+}
+
