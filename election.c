@@ -210,3 +210,33 @@ static ElectionResult checkElectionIdNameAgruments(Election election, int id, co
     return ELECTION_SUCCESS;
 }
 
+Election electionCreate() {
+    Election election = malloc(sizeof(*election));
+    if(election == NULL){
+        return NULL;
+    }
+
+    //initialize empty election
+    election->tribes = mapCreate();
+    if(election->tribes == NULL) {
+        electionDestroy(election);
+        return NULL;
+    }
+
+    election->areas = mapCreate();
+    if(election->areas == NULL) {
+        mapDestroy(election->tribes);
+        electionDestroy(election);
+        return NULL;
+    }
+
+    election->votes = mapCreate();
+    if(election->votes == NULL) {
+        mapDestroy(election->areas);
+        mapDestroy(election->tribes);
+        electionDestroy(election);
+        return NULL;
+    }
+
+    return election;
+}
