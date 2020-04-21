@@ -4,12 +4,17 @@
 CMakeFiles/hw1.dir/election.c.obj
  C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/election.c
  C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/election.h
+ C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.h
  C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.h
 CMakeFiles/hw1.dir/main.c.obj
  C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/election.h
  C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c
  C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.h
  C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.h
+CMakeFiles/hw1.dir/map_serializer.c.obj
+ C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.c
+ C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.h
+ C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.h
 CMakeFiles/hw1.dir/mtm_map/map.c.obj
  C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c
  C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.h

@@ -83,6 +83,12 @@
 		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c">
 			<Option target="hw1"/>
 		</Unit>
+		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.c">
+			<Option target="hw1"/>
+		</Unit>
+		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.h">
+			<Option target="hw1"/>
+		</Unit>
 		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c">
 			<Option target="hw1"/>
 		</Unit>

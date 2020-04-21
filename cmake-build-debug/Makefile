@@ -179,6 +179,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/main.c.s
 .PHONY : main.c.s
 
+map_serializer.obj: map_serializer.c.obj
+
+.PHONY : map_serializer.obj
+
+# target to build an object file
+map_serializer.c.obj:
+	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/map_serializer.c.obj
+.PHONY : map_serializer.c.obj
+
+map_serializer.i: map_serializer.c.i
+
+.PHONY : map_serializer.i
+
+# target to preprocess a source file
+map_serializer.c.i:
+	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/map_serializer.c.i
+.PHONY : map_serializer.c.i
+
+map_serializer.s: map_serializer.c.s
+
+.PHONY : map_serializer.s
+
+# target to generate assembly for a file
+map_serializer.c.s:
+	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/map_serializer.c.s
+.PHONY : map_serializer.c.s
+
 mtm_map/map.obj: mtm_map/map.c.obj
 
 .PHONY : mtm_map/map.obj
@@ -248,6 +275,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... map_serializer.obj
+	@echo ... map_serializer.i
+	@echo ... map_serializer.s
 	@echo ... mtm_map/map.obj
 	@echo ... mtm_map/map.i
 	@echo ... mtm_map/map.s
