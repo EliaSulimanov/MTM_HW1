@@ -110,12 +110,6 @@ static ElectionResult checkArguments(Election election, int id, const char* name
         return is_exist_result;
     }
 
-    if(mapContains(map, id_string)) {
-        free(id_string);
-        return ELECTION_TRIBE_ALREADY_EXIST;
-    }
-    free(id_string);
-
     return ELECTION_SUCCESS;
 }
 
