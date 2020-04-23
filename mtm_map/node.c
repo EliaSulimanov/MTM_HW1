@@ -42,11 +42,6 @@ char* nodeGetKey(Node node) {
     if(node == NULL) {
         return NULL;
     }
-    /*char* key = malloc(strlen(node->key) + 1);
-    if(key == NULL) {
-        return NULL;
-    }
-    strcpy(key, node->key);*/
     return node->key;
 }
 
@@ -54,22 +49,7 @@ char* nodeGetValue(Node node) {
     if(node == NULL) {
         return NULL;
     }
-    /*char* key = malloc(strlen(node->value) + 1);
-    if(value == NULL) {
-        return NULL;
-    }
-    strcpy(value, node->value);*/
     return node->value;
-}
-
-bool nodeSetKey(Node node, const char* key) {
-    free(node->key);
-    node->key = malloc(strlen(key) + 1);
-    if(node->key == NULL) {
-        return false;
-    }
-    strcpy(node->key, key);
-    return true;
 }
 
 bool nodeSetValue(Node node, const char* value) {

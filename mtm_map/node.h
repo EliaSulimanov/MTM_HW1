@@ -57,17 +57,6 @@ Node nodeGetNext(Node node);
 void nodeSetNext(Node current_node, Node next_node);
 
 /**
-* nodeSetKey: Sets the key of the given node.
-*
-* @param node - the node to set the key of.
-* @param key - the key to set.
-* @return
-* 	false - in case of memory error.
-* 	ture otherwise.
-*/
-bool nodeSetKey(Node node, const char* key);
-
-/**
 * nodeSetValue: Sets the value of the given node.
 *
 * @param node - the node to set the value of.
