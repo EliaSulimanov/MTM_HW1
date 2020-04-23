@@ -233,32 +233,32 @@ mtm_map/node.c.s:
 	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/mtm_map/node.c.s
 .PHONY : mtm_map/node.c.s
 
-tests/map_example_test.obj: tests/map_example_test.c.obj
+tests/electionTestsExample.obj: tests/electionTestsExample.c.obj
 
-.PHONY : tests/map_example_test.obj
+.PHONY : tests/electionTestsExample.obj
 
 # target to build an object file
-tests/map_example_test.c.obj:
-	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/tests/map_example_test.c.obj
-.PHONY : tests/map_example_test.c.obj
+tests/electionTestsExample.c.obj:
+	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj
+.PHONY : tests/electionTestsExample.c.obj
 
-tests/map_example_test.i: tests/map_example_test.c.i
+tests/electionTestsExample.i: tests/electionTestsExample.c.i
 
-.PHONY : tests/map_example_test.i
+.PHONY : tests/electionTestsExample.i
 
 # target to preprocess a source file
-tests/map_example_test.c.i:
-	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/tests/map_example_test.c.i
-.PHONY : tests/map_example_test.c.i
+tests/electionTestsExample.c.i:
+	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/tests/electionTestsExample.c.i
+.PHONY : tests/electionTestsExample.c.i
 
-tests/map_example_test.s: tests/map_example_test.c.s
+tests/electionTestsExample.s: tests/electionTestsExample.c.s
 
-.PHONY : tests/map_example_test.s
+.PHONY : tests/electionTestsExample.s
 
 # target to generate assembly for a file
-tests/map_example_test.c.s:
-	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/tests/map_example_test.c.s
-.PHONY : tests/map_example_test.c.s
+tests/electionTestsExample.c.s:
+	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/tests/electionTestsExample.c.s
+.PHONY : tests/electionTestsExample.c.s
 
 # Help Target
 help:
@@ -281,9 +281,9 @@ help:
 	@echo ... mtm_map/node.obj
 	@echo ... mtm_map/node.i
 	@echo ... mtm_map/node.s
-	@echo ... tests/map_example_test.obj
-	@echo ... tests/map_example_test.i
-	@echo ... tests/map_example_test.s
+	@echo ... tests/electionTestsExample.obj
+	@echo ... tests/electionTestsExample.i
+	@echo ... tests/electionTestsExample.s
 .PHONY : help
 
 

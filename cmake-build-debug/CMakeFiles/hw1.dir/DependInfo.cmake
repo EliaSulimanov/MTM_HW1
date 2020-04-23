@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/hw1.dir/map_serializer.c.obj"
   "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/hw1.dir/mtm_map/map.c.obj"
   "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/hw1.dir/mtm_map/node.c.obj"
-  "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/map_example_test.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/hw1.dir/tests/map_example_test.c.obj"
+  "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/electionTestsExample.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

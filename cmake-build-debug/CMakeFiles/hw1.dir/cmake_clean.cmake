@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/hw1.dir/tests/map_example_test.c.obj"
+  "CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj"
   "CMakeFiles/hw1.dir/mtm_map/map.c.obj"
   "CMakeFiles/hw1.dir/mtm_map/node.c.obj"
   "CMakeFiles/hw1.dir/election.c.obj"
