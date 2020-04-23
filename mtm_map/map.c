@@ -194,7 +194,6 @@ char* mapGetFirst(Map map) {
     }
     map->iterator = map->head;
 
-    //remember to free this key.
     char* node_key = nodeGetKey(map->iterator);
     return node_key;
 }
@@ -206,7 +205,6 @@ char* mapGetNext(Map map) {
     if(map->head == NULL) {
         return NULL;
     }
-    //map->iterator = nodeGetNext(map->head);
     map->iterator = nodeGetNext(map->iterator);
     if(map->iterator == NULL){
         return NULL;
