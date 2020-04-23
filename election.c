@@ -111,7 +111,7 @@ static ElectionResult checkArguments(Election election, int id, const char* name
     }
 
     ElectionResult is_exist_result = checkIsElementExistInMap(election, id, map_type);
-    if(is_exist_result != MAP_SUCCESS) {
+    if(is_exist_result != ELECTION_SUCCESS) {
         return is_exist_result;
     }
 
