@@ -205,7 +205,38 @@ ElectionResult electionAddArea(Election election, int area_id, const char* area_
 }
 
 char* electionGetTribeName (Election election, int tribe_id) {
-    
+    if(election == NULL || !checkId(tribe_id)) {
+        return NULL;
+    }
+
+    assert(election->tribes != NULL);
+    if(checkIsElementExistInMap(election, tribe_id, MAP_TYPE_TRIBE) != ELECTION_SUCCESS) {
+        return NULL;
+    }
+
+    char* tribe_id_string = intToString(tribe_id);
+    if(tribe_id_string == NULL) {
+        return NULL;
+    }
+
+    char* tribe_name = mapGet(election->tribes, tribe_id_string);
+    if(tribe_name == NULL) {
+        free(tribe_id_string);
+        return NULL;
+    }
+
+    char* tribe_name_copy = malloc(strlen(tribe_name) + 1);
+    if(tribe_name_copy == NULL) {
+        free(tribe_id_string);
+        return NULL;
+    }
+
+    free(tribe_id_string);
+
+    strcpy(tribe_name_copy, tribe_name);
+    tribe_name_copy[strlen(tribe_name)] = NULL_TERMINATOR; //TODO: Check if terminator is added at the end as expected
+
+    return tribe_name_copy;
 }
 
 #undef NULL_TERMINATOR
