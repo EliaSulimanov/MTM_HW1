@@ -55,35 +55,7 @@ static char* intToString(int number) {
     return str;
 }
 
-static ElectionResult checkIsTribeExist(Election election, int id) {
-    char *id_string = intToString(id);
-    if(id_string == NULL) {
-        return ELECTION_OUT_OF_MEMORY;
-    }
-
-    if(mapContains(election->tribes, id_string)) {
-        free(id_string);
-        return ELECTION_TRIBE_ALREADY_EXIST;
-    }
-    free(id_string);
-    return ELECTION_SUCCESS;
-}
-
-static ElectionResult checkIsAreaExist(Election election, int id) {
-    char *id_string = intToString(id);
-    if(id_string == NULL) {
-        return ELECTION_OUT_OF_MEMORY;
-    }
-
-    if(mapContains(election->areas, id_string)) {
-        free(id_string);
-        return ELECTION_AREA_ALREADY_EXIST;
-    }
-    free(id_string);
-    return ELECTION_SUCCESS;
-}
-
-static ElectionResult checkElectionIdNameArguments(Election election, int id, const char* name) {
+static ElectionResult checkElectionIdNameArgumentsAndIsExist(Election election, int id, const char* name, Map map) {
     if(election == NULL || name == NULL) {
         return ELECTION_NULL_ARGUMENT;
     }
@@ -95,6 +67,18 @@ static ElectionResult checkElectionIdNameArguments(Election election, int id, co
     if(!checkName(name)) {
         return ELECTION_INVALID_NAME;
     }
+
+    assert(map != NULL);
+    char *id_string = intToString(id);
+    if(id_string == NULL) {
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    if(mapContains(map, id_string)) {
+        free(id_string);
+        return ELECTION_TRIBE_ALREADY_EXIST;
+    }
+    free(id_string);
 
     return ELECTION_SUCCESS;
 }
@@ -142,14 +126,9 @@ void electionDestroy(Election election) {
 }
 
 ElectionResult electionAddTribe (Election election, int tribe_id, const char* tribe_name) {
-    ElectionResult arguments_check = checkElectionIdNameArguments(election, tribe_id, tribe_name);
+    ElectionResult arguments_check = checkElectionIdNameArgumentsAndIsExist(election, tribe_id, tribe_name, election->tribes);
     if(arguments_check != ELECTION_SUCCESS) {
         return arguments_check;
-    }
-
-    ElectionResult tribe_exist_check = checkIsTribeExist(election, tribe_id);
-    if(tribe_exist_check != ELECTION_SUCCESS) {
-        return tribe_exist_check;
     }
 
     char *tribe_id_string = intToString(tribe_id);
@@ -169,14 +148,9 @@ ElectionResult electionAddTribe (Election election, int tribe_id, const char* tr
 }
 
 ElectionResult electionAddArea(Election election, int area_id, const char* area_name) {
-    ElectionResult arguments_check = checkElectionIdNameArguments(election, area_id, area_name);
+    ElectionResult arguments_check = checkElectionIdNameArgumentsAndIsExist(election, area_id, area_name, election->areas);
     if(arguments_check != ELECTION_SUCCESS) {
         return arguments_check;
-    }
-
-    ElectionResult area_exist_check = checkIsAreaExist(election, area_id);
-    if(area_exist_check != ELECTION_SUCCESS) {
-        return area_exist_check;
     }
 
     char *area_id_string = intToString(area_id);
@@ -193,6 +167,10 @@ ElectionResult electionAddArea(Election election, int area_id, const char* area_
     }
 
     return ELECTION_SUCCESS;
+}
+
+char* electionGetTribeName (Election election, int tribe_id) {
+    
 }
 
 #undef NULL_TERMINATOR
