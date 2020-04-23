@@ -63,7 +63,36 @@ static char* intToString(int number) {
     return str;
 }
 
-static ElectionResult checkElectionIdNameArgumentsAndIsExist(Election election, int id, const char* name, Map map) {
+static ElectionResult checkIsElementExistInMap(Election election, int element_id, MapType map_type) {
+    assert(election != NULL);
+
+    char *id_string = intToString(element_id);
+    if(id_string == NULL) {
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    Map map;
+    ElectionResult already_exist_error;
+    if(map_type == MAP_TYPE_TRIBE) {
+        assert(election->tribes != NULL);
+        map = election->tribes;
+        already_exist_error = ELECTION_TRIBE_ALREADY_EXIST;
+    } else {
+        assert(election->areas != NULL);
+        map = election->areas;
+        already_exist_error = ELECTION_AREA_ALREADY_EXIST;
+    }
+
+    if(mapContains(map, id_string)) {
+        free(id_string);
+        return already_exist_error;
+    }
+    free(id_string);
+
+    return ELECTION_SUCCESS;
+}
+
+static ElectionResult checkArguments(Election election, int id, const char* name, MapType map_type) {
     if(election == NULL || name == NULL) {
         return ELECTION_NULL_ARGUMENT;
     }
@@ -76,10 +105,9 @@ static ElectionResult checkElectionIdNameArgumentsAndIsExist(Election election, 
         return ELECTION_INVALID_NAME;
     }
 
-    assert(map != NULL);
-    char *id_string = intToString(id);
-    if(id_string == NULL) {
-        return ELECTION_OUT_OF_MEMORY;
+    ElectionResult is_exist_result = checkIsElementExistInMap(election, id, map_type);
+    if(is_exist_result != MAP_SUCCESS) {
+        return is_exist_result;
     }
 
     if(mapContains(map, id_string)) {
