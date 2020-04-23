@@ -49,7 +49,7 @@ static int getNumberOfCharsInInteger(int id) {
         return 1;
     }
 
-    while(id / TEN != 0) {
+    while(id != 0) {
         length++;
         id /= TEN;
     }
