@@ -51,6 +51,7 @@ static char* intToString(int number) {
         return NULL;
     }
     sprintf(str, "%d", number); //check if it adds null terminator at the end, or if it does the job
+    *(str+length+1)=NULL_TERMINATOR;
     return str;
 }
 
