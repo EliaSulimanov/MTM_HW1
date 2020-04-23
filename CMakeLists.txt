@@ -12,6 +12,6 @@ set(CMAKE_C_FLAGS ${MTM_FLAGS_DEBUG})
 
 #link_directories(.)
 
-add_executable(hw1 main.c mtm_map/map.c mtm_map/node.c election.c map_serializer.c)
+add_executable(hw1 tests/map_example_test.c mtm_map/map.c mtm_map/node.c election.c map_serializer.c)
 
 #target_link_libraries(hw1 libmap.a)
