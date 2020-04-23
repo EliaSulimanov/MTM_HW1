@@ -69,14 +69,90 @@ bool testElectionAddTribeNullElection() {
     ASSERT_TEST(electionAddTribe(NULL, 3, "tribe one") == ELECTION_NULL_ARGUMENT);
     return true;
 }
+/***********************************************************/
+bool testElectionAddArea() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 1, "area one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 2, "area tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 3, "area tribe") == ELECTION_SUCCESS);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionAddAreaAlreadyExist() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 1, "area one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 2, "other area") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 3, "other area") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 2, "nanana") == ELECTION_AREA_ALREADY_EXIST);
+    ASSERT_TEST(electionAddArea(election, 3, "blue") == ELECTION_AREA_ALREADY_EXIST);
+    ASSERT_TEST(electionAddArea(election, 1, "test test test") == ELECTION_AREA_ALREADY_EXIST);
+    ASSERT_TEST(electionAddArea(election, 4, "work") == ELECTION_SUCCESS);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionAddAreaInvalidId() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, -1, "area one") == ELECTION_INVALID_ID);
+    ASSERT_TEST(electionAddArea(election, 5-8, "work") == ELECTION_INVALID_ID);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionAddAreaInvalidName() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 0, "Area") == ELECTION_INVALID_NAME);
+    ASSERT_TEST(electionAddArea(election, 3, "w0rk") == ELECTION_INVALID_NAME);
+    ASSERT_TEST(electionAddArea(election, 0, " ") == ELECTION_INVALID_NAME);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionAddAreaEmptyName() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 0, "") == ELECTION_INVALID_NAME);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionAddAreaNullElection() {
+    ASSERT_TEST(electionAddArea(NULL, 3, "area one") == ELECTION_NULL_ARGUMENT);
+    return true;
+}
+
 /*The functions for the tests should be added here*/
 bool (*tests[]) (void) = {
-                      testElectionRemoveAreas
+                      testElectionRemoveAreas,
+                      testElectionAddTribe,
+                      testElectionAddTribeAlreadyExist,
+                      testElectionAddTribeInvalidId,
+                      testElectionAddTribeInvalidName,
+                      testElectionAddTribeEmptyName,
+                      testElectionAddTribeNullElection,
+                      testElectionAddArea,
+                      testElectionAddAreaAlreadyExist,
+                      testElectionAddAreaInvalidId,
+                      testElectionAddAreaInvalidName,
+                      testElectionAddAreaEmptyName,
+                      testElectionAddAreaNullElection
 };
 
 /*The names of the test functions should be added here*/
 const char* testNames[] = {
-                           "testElectionRemoveAreas"
+                           "testElectionRemoveAreas",
+                           "testElectionAddTribe",
+                           "testElectionAddTribeAlreadyExist",
+                           "testElectionAddTribeInvalidId",
+                           "testElectionAddTribeInvalidName",
+                           "testElectionAddTribeEmptyName",
+                           "testElectionAddTribeNullElection",
+                           "testElectionAddArea",
+                           "testElectionAddAreaAlreadyExist",
+                           "testElectionAddAreaInvalidId",
+                           "testElectionAddAreaInvalidName",
+                           "testElectionAddAreaEmptyName",
+                           "testElectionAddAreaNullElection"
 };
 
 int main(int argc, char *argv[]) {
