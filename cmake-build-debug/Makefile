@@ -152,33 +152,6 @@ election.c.s:
 	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/election.c.s
 .PHONY : election.c.s
 
-main.obj: main.c.obj
-
-.PHONY : main.obj
-
-# target to build an object file
-main.c.obj:
-	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/main.c.obj
-.PHONY : main.c.obj
-
-main.i: main.c.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.c.i:
-	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/main.c.i
-.PHONY : main.c.i
-
-main.s: main.c.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.c.s:
-	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/main.c.s
-.PHONY : main.c.s
-
 map_serializer.obj: map_serializer.c.obj
 
 .PHONY : map_serializer.obj
@@ -260,6 +233,33 @@ mtm_map/node.c.s:
 	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/mtm_map/node.c.s
 .PHONY : mtm_map/node.c.s
 
+tests/map_example_test.obj: tests/map_example_test.c.obj
+
+.PHONY : tests/map_example_test.obj
+
+# target to build an object file
+tests/map_example_test.c.obj:
+	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/tests/map_example_test.c.obj
+.PHONY : tests/map_example_test.c.obj
+
+tests/map_example_test.i: tests/map_example_test.c.i
+
+.PHONY : tests/map_example_test.i
+
+# target to preprocess a source file
+tests/map_example_test.c.i:
+	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/tests/map_example_test.c.i
+.PHONY : tests/map_example_test.c.i
+
+tests/map_example_test.s: tests/map_example_test.c.s
+
+.PHONY : tests/map_example_test.s
+
+# target to generate assembly for a file
+tests/map_example_test.c.s:
+	$(MAKE) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/tests/map_example_test.c.s
+.PHONY : tests/map_example_test.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -272,9 +272,6 @@ help:
 	@echo ... election.obj
 	@echo ... election.i
 	@echo ... election.s
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
 	@echo ... map_serializer.obj
 	@echo ... map_serializer.i
 	@echo ... map_serializer.s
@@ -284,6 +281,9 @@ help:
 	@echo ... mtm_map/node.obj
 	@echo ... mtm_map/node.i
 	@echo ... mtm_map/node.s
+	@echo ... tests/map_example_test.obj
+	@echo ... tests/map_example_test.i
+	@echo ... tests/map_example_test.s
 .PHONY : help
 
 

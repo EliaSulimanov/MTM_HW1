@@ -80,9 +80,6 @@
 		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/election.h">
 			<Option target="hw1"/>
 		</Unit>
-		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c">
-			<Option target="hw1"/>
-		</Unit>
 		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.c">
 			<Option target="hw1"/>
 		</Unit>
@@ -99,6 +96,9 @@
 			<Option target="hw1"/>
 		</Unit>
 		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.h">
+			<Option target="hw1"/>
+		</Unit>
+		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/map_example_test.c">
 			<Option target="hw1"/>
 		</Unit>
 		<Unit filename="C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/CMakeLists.txt">
