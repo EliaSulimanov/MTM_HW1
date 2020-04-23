@@ -211,7 +211,7 @@ char* electionGetTribeName (Election election, int tribe_id) {
     }
 
     assert(election->tribes != NULL);
-    if(checkIsElementExistInMap(election, tribe_id, MAP_TYPE_TRIBE) != ELECTION_SUCCESS) {
+    if(checkIsElementExistInMap(election, tribe_id, MAP_TYPE_TRIBE) != ELECTION_TRIBE_ALREADY_EXIST) {
         return NULL;
     }
 
