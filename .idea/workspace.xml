@@ -30,21 +30,25 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/election.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="172" column="4" selection-start-line="172" selection-start-column="4" selection-end-line="172" selection-end-column="4" />
+            <state relative-caret-position="141">
+              <caret line="206" column="26" selection-start-line="206" selection-start-column="6" selection-end-line="206" selection-end-column="26" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#363#376#0" />
                 <element signature="e#323#683#0" />
+                <element signature="e#685#721#0" />
                 <element signature="e#685#893#0" />
                 <element signature="e#895#1226#0" />
+                <element signature="e#1429#2061#0" />
                 <element signature="e#1949#2298#0" />
                 <element signature="e#2300#2998#0" />
                 <element signature="e#3000#3213#0" />
                 <element signature="e#3215#4063#0" />
                 <element signature="e#4065#4894#0" />
+                <element signature="e#4194#4263#0" />
               </folding>
             </state>
           </provider>
@@ -53,17 +57,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/election.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="34" selection-start-line="34" selection-end-line="34" selection-end-column="60" />
+            <state relative-caret-position="544">
+              <caret line="38" column="86" selection-start-line="38" selection-start-column="86" selection-end-line="38" selection-end-column="86" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/electionTestsExample.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+            <state relative-caret-position="1870">
+              <caret line="110" selection-start-line="110" selection-end-line="110" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -107,10 +111,10 @@
         <option value="$PROJECT_DIR$/map_serializer.h" />
         <option value="$PROJECT_DIR$/map_serializer.c" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/tests/electionTestsExample.c" />
         <option value="$PROJECT_DIR$/mtm_map/node.c" />
         <option value="$PROJECT_DIR$/mtm_map/node.h" />
         <option value="$PROJECT_DIR$/mtm_map/map.c" />
+        <option value="$PROJECT_DIR$/tests/electionTestsExample.c" />
         <option value="$PROJECT_DIR$/election.c" />
       </list>
     </option>
@@ -138,7 +142,7 @@
             <path>
               <item name="hw1" type="b2602c69:ProjectViewProjectNode" />
               <item name="ex1" type="462c0819:PsiDirectoryNode" />
-              <item name="mtm_map" type="462c0819:PsiDirectoryNode" />
+              <item name="misc" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -202,12 +206,12 @@
       <workItem from="1587484065733" duration="328000" />
       <workItem from="1587485144390" duration="4062000" />
       <workItem from="1587489474024" duration="219000" />
-      <workItem from="1587654707615" duration="3721000" />
+      <workItem from="1587654707615" duration="6547000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46980000" />
+    <option name="totallyTimeSpent" value="49806000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -307,23 +311,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mtm_map/node.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-352">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mtm_map/map.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3332">
-          <caret line="196" selection-start-line="196" selection-end-line="196" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -331,37 +318,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/electionTestsExample.c">
+    <entry file="file://$PROJECT_DIR$/election.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+        <state relative-caret-position="544">
+          <caret line="38" column="86" selection-start-line="38" selection-start-column="86" selection-end-line="38" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mtm_map/node.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="47" column="6" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mtm_map/map.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="180" column="27" lean-forward="true" selection-start-line="180" selection-start-column="27" selection-end-line="180" selection-end-column="27" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/election.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="34" selection-start-line="34" selection-end-line="34" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/election.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="172" column="4" selection-start-line="172" selection-start-column="4" selection-end-line="172" selection-end-column="4" />
+        <state relative-caret-position="141">
+          <caret line="206" column="26" selection-start-line="206" selection-start-column="6" selection-end-line="206" selection-end-column="26" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#363#376#0" />
             <element signature="e#323#683#0" />
+            <element signature="e#685#721#0" />
             <element signature="e#685#893#0" />
             <element signature="e#895#1226#0" />
+            <element signature="e#1429#2061#0" />
             <element signature="e#1949#2298#0" />
             <element signature="e#2300#2998#0" />
             <element signature="e#3000#3213#0" />
             <element signature="e#3215#4063#0" />
             <element signature="e#4065#4894#0" />
+            <element signature="e#4194#4263#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/electionTestsExample.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1870">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
