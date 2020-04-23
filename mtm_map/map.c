@@ -83,6 +83,10 @@ MapResult mapRemove(Map map, const char* key) {
         return MAP_NULL_ARGUMENT;
     }
     
+    if(strcmp(key, "") == 0){
+        return MAP_ERROR;
+    }
+    
     Node temp = map->head;
     Node previous;
 
@@ -142,6 +146,10 @@ MapResult mapClear(Map map) {
 MapResult mapPut(Map map, const char* key, const char* data) {
     if(map == NULL || key == NULL || data == NULL) {
         return MAP_NULL_ARGUMENT;
+    }
+    
+    if(strcmp(key, "") == 0 || strcmp(data, "") == 0){
+        return MAP_ERROR;
     }
 
     if(mapContains(map, key)) {
