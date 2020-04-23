@@ -29,6 +29,13 @@ static bool checkName(const char* name) {
     return true;
 }
 
+static bool checkId(int id) {
+    if(id >= MIN_ALLOWED_ID) {
+        return true;
+    }
+    return false;
+}
+
 static int getNumberOfCharsInInteger(int id) {
     int length = 0;
 
@@ -60,7 +67,7 @@ static ElectionResult checkElectionIdNameArgumentsAndIsExist(Election election, 
         return ELECTION_NULL_ARGUMENT;
     }
 
-    if(id < 0) {
+    if(!checkId(id)) {
         return ELECTION_INVALID_ID;
     }
 
