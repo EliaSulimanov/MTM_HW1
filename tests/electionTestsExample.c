@@ -3,7 +3,7 @@
 #include "../test_utilities.h"
 
 /*The number of tests*/
-#define NUMBER_TESTS 12
+#define NUMBER_TESTS 17
 
 bool deleteOnlyFirstArea (int area_id) {
 	return area_id == 1;
@@ -121,6 +121,102 @@ bool testElectionAddAreaNullElection() {
     return true;
 }
 
+bool testElectionGetTribeName() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 1, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 3, "other tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 8, "tribe four") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 41, "other five") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 32, "tester") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 4, "tribe name here") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 6, "taro") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 5, "fourth time charm") == ELECTION_SUCCESS);
+
+    char* tribe_name = electionGetTribeName(election, 32);
+    if(tribe_name == NULL)
+        return true;
+    ASSERT_TEST(strcmp(tribe_name, "tester") == 0);
+    free(tribe_name);
+    tribe_name = electionGetTribeName(election, 3);
+    if(tribe_name == NULL)
+        return true;
+    ASSERT_TEST(strcmp(tribe_name, "other tribe") == 0);
+    free(tribe_name);
+    tribe_name = electionGetTribeName(election, 6);
+    if(tribe_name == NULL)
+        return true;
+    ASSERT_TEST(strcmp(tribe_name, "taro") == 0);
+    free(tribe_name);
+    tribe_name = electionGetTribeName(election, 5);
+    if(tribe_name == NULL)
+        return true;
+    ASSERT_TEST(strcmp(tribe_name, "fourth time") != 0);
+    free(tribe_name);
+
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionGetTribeNameInvalidId() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+
+    char* tribe_name = electionGetTribeName(election, -5);
+    ASSERT_TEST(tribe_name == NULL);
+
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionGetTribeNameNotExist() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+
+    char* tribe_name = electionGetTribeName(election, 8);
+    ASSERT_TEST(tribe_name == NULL);
+
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionGetTribeNameNullArgument() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+
+    char* tribe_name = electionGetTribeName(NULL, 8);
+    ASSERT_TEST(tribe_name == NULL);
+
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionGetTribeNameIsReallyCopy() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+
+    char* tribe_name = electionGetTribeName(election, 5);
+    if(tribe_name == NULL)
+        return true;
+    ASSERT_TEST(strcmp(tribe_name, "tribe one") == 0);
+    tribe_name[0] = 'm';
+
+    char* tribe_name_second_time = electionGetTribeName(election, 5);
+    if(tribe_name_second_time == NULL)
+        return true;
+    ASSERT_TEST(strcmp(tribe_name_second_time, "tribe one") == 0);
+
+    free(tribe_name);
+    free(tribe_name_second_time);
+
+    electionDestroy(election);
+    return true;
+}
+
 /*The functions for the tests should be added here*/
 bool (*tests[]) (void) = {
                       testElectionAddTribe,
@@ -134,7 +230,12 @@ bool (*tests[]) (void) = {
                       testElectionAddAreaInvalidId,
                       testElectionAddAreaInvalidName,
                       testElectionAddAreaEmptyName,
-                      testElectionAddAreaNullElection
+                      testElectionAddAreaNullElection,
+                      testElectionGetTribeName,
+                      testElectionGetTribeNameInvalidId,
+                      testElectionGetTribeNameNotExist,
+                      testElectionGetTribeNameNullArgument,
+                      testElectionGetTribeNameIsReallyCopy
 };
 
 /*The names of the test functions should be added here*/
@@ -150,7 +251,12 @@ const char* testNames[] = {
                            "testElectionAddAreaInvalidId",
                            "testElectionAddAreaInvalidName",
                            "testElectionAddAreaEmptyName",
-                           "testElectionAddAreaNullElection"
+                           "testElectionAddAreaNullElection",
+                           "testElectionGetTribeName",
+                           "testElectionGetTribeNameInvalidId",
+                           "testElectionGetTribeNameNotExist",
+                           "testElectionGetTribeNameNullArgument",
+                           "testElectionGetTribeNameIsReallyCopy"
 };
 
 int main(int argc, char *argv[]) {
