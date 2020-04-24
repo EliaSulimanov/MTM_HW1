@@ -53,14 +53,15 @@ bool testElectionAddTribeInvalidName() {
     Election election = electionCreate();
     ASSERT_TEST(electionAddTribe(election, 0, "Tribe") == ELECTION_INVALID_NAME);
     ASSERT_TEST(electionAddTribe(election, 3, "w0rk") == ELECTION_INVALID_NAME);
-    ASSERT_TEST_WITH_FREE(electionAddTribe(election, 0, " ") == ELECTION_INVALID_NAME, electionDestroy(election));
+    electionDestroy(election);
     return true;
 }
 
 bool testElectionAddTribeEmptyName() {
     Election election = electionCreate();
-    ASSERT_TEST_WITH_FREE(electionAddTribe(election, 0, "") == ELECTION_INVALID_NAME, electionDestroy(election));
-    //electionDestroy(election);
+    ASSERT_TEST(electionAddTribe(election, 0, " ") == ELECTION_SUCCESS);
+    ASSERT_TEST_WITH_FREE(electionAddTribe(election, 123456789, "") == ELECTION_SUCCESS, electionDestroy(election));
+    electionDestroy(election);
     return true;
 }
 
@@ -102,14 +103,16 @@ bool testElectionAddAreaInvalidId() {
 bool testElectionAddAreaInvalidName() {
     Election election = electionCreate();
     ASSERT_TEST(electionAddArea(election, 0, "Area") == ELECTION_INVALID_NAME);
-    ASSERT_TEST(electionAddArea(election, 3, "w0rk") == ELECTION_INVALID_NAME);
-    ASSERT_TEST_WITH_FREE(electionAddArea(election, 0, " ") == ELECTION_INVALID_NAME, electionDestroy(election));
+    ASSERT_TEST_WITH_FREE(electionAddArea(election, 3, "w0rk") == ELECTION_INVALID_NAME, electionDestroy(election));
+    electionDestroy(election);
     return true;
 }
 
 bool testElectionAddAreaEmptyName() {
     Election election = electionCreate();
-    ASSERT_TEST_WITH_FREE(electionAddArea(election, 0, "") == ELECTION_INVALID_NAME, electionDestroy(election));
+    ASSERT_TEST(electionAddArea(election, 0, " ") == ELECTION_SUCCESS);
+    ASSERT_TEST_WITH_FREE(electionAddArea(election, 1001, "") == ELECTION_SUCCESS, electionDestroy(election));
+    electionDestroy(election);
     return true;
 }
 

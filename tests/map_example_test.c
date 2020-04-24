@@ -36,9 +36,9 @@ bool testMapAddAndSize() {
 bool testMapAddEmptyString() {
     Map map = mapCreate();
     ASSERT_TEST(mapGetSize(map) == 0);
-    ASSERT_TEST(mapPut(map, "", "value") == MAP_ERROR);
+    ASSERT_TEST(mapPut(map, "", "value") == MAP_SUCCESS);
     ASSERT_TEST(mapGetSize(map) == 0);
-    ASSERT_TEST(mapPut(map, "key", "") == MAP_ERROR);
+    ASSERT_TEST(mapPut(map, "key", "") == MAP_SUCCESS);
     ASSERT_TEST(mapGetSize(map) == 0);
     mapDestroy(map);
     return true;
@@ -58,6 +58,9 @@ bool testMapGetEmptyString() {
     ASSERT_TEST(mapPut(map, "key", "value") == MAP_SUCCESS);
     char *getVal = mapGet(map, "");
     ASSERT_TEST(getVal == NULL);
+    ASSERT_TEST(mapPut(map, "", "value") == MAP_SUCCESS);
+    char *getNewVal = mapGet(map, "");
+    ASSERT_TEST(strcmp(getNewVal, "value"));
     mapDestroy(map);
     return true;
 }
@@ -156,9 +159,8 @@ bool testMapRemoveEmptyString() {
     ASSERT_TEST(mapContains(map, "key") == false);
     ASSERT_TEST(mapPut(map, "key", "value") == MAP_SUCCESS);
     ASSERT_TEST(mapContains(map, "key") == true);
-    ASSERT_TEST(mapRemove(map, "") == MAP_ERROR);
+    ASSERT_TEST(mapRemove(map, "") == MAP_SUCCESS);
     ASSERT_TEST(mapRemove(map, "key") == MAP_SUCCESS);
-    ASSERT_TEST(mapRemove(map, "") == MAP_ERROR);
     mapDestroy(map);
     return true;
 }
