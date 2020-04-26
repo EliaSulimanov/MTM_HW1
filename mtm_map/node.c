@@ -5,6 +5,9 @@
 
 #include "node.h"
 
+#define NULL_TERMINATOR '\0'
+
+
 struct Node_t
 {
     char *key;
@@ -24,6 +27,7 @@ Node nodeCreate(const char* key, const char* value, Node next) {
         return NULL;
     }
     strcpy(node->key, key);
+    node->key[strlen(key)] = NULL_TERMINATOR; //TODO: check if breaks tests
 
     node->value = malloc(strlen(value) + 1);
     if(node->value == NULL) {
@@ -32,6 +36,7 @@ Node nodeCreate(const char* key, const char* value, Node next) {
         return NULL;
     }
     strcpy(node->value, value);
+    node->value[strlen(value)] = NULL_TERMINATOR; //TODO: check if breaks tests
 
     node->next = next;
 
@@ -59,6 +64,8 @@ bool nodeSetValue(Node node, const char* value) {
         return false;
     }
     strcpy(node->value, value);
+    node->value[strlen(value)] = NULL_TERMINATOR; //TODO: check if breaks tests
+
     return true;
 }
 
@@ -87,3 +94,5 @@ void nodeDestroy(Node node) {
     node->next = NULL;
     free(node);
 }
+
+#undef NULL_TERMINATOR
