@@ -5,11 +5,16 @@
 #include "mtm_map/node.h"
 #include "election.h"
 
+bool deleteOnlyFirstArea (int area_id) {
+    return area_id == 1;
+}
+
 int main() {
     Election election = electionCreate();
+    electionAddArea(election, 1, "first area");
+    electionAddArea(election, 2, "second area");
 
-    electionAddTribe(election, 12, "tribe one");
-    electionAddArea(election, 8, "area one");
-
+    electionRemoveAreas(election, deleteOnlyFirstArea);
     electionDestroy(election);
+    return true;
 }
