@@ -315,4 +315,5 @@ ElectionResult electionAddVote (Election election, int area_id, int tribe_id, in
 #undef MIN_ALLOWED_LETTER
 #undef MAX_ALLOWED_LETTER
 #undef SPECIAL_ALLOWED_LETTER
+#undef MIN_ALLOWED_ID
 #undef TEN
