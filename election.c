@@ -185,6 +185,13 @@ ElectionResult electionAddTribe (Election election, int tribe_id, const char* tr
 
     assert(election->tribes != NULL);
     MapResult map_put_result = mapPut(election->tribes, tribe_id_string, tribe_name);
+
+    if(map_put_result == MAP_OUT_OF_MEMORY) {
+        free(tribe_id_string);
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    map_put_result = mapPut(election->votes, tribe_id_string, "\n");
     free(tribe_id_string);
 
     if(map_put_result == MAP_OUT_OF_MEMORY) {
