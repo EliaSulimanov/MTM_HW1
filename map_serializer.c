@@ -3,6 +3,7 @@
 //
 
 #include <stdlib.h>
+#include <assert.h>
 #include "map_serializer.h"
 
 #define NULL_TERMINATOR '\0'
@@ -14,6 +15,7 @@
  * @return number of char occurrences in the given string
  */
 static int getNumberOfCharOccurrencesInString(const char *str, const char char_to_search) {
+    assert(str != NULL);
     int occurrences = 0;
     const char* str_iterator = str; //iterator to the head of the string
     while(*str_iterator != NULL_TERMINATOR)
@@ -33,6 +35,7 @@ static int getNumberOfCharOccurrencesInString(const char *str, const char char_t
  * @return the length of the key
  */
 static int getKeyLengthInMapString(const char *str, int start_index) {
+    assert(str != NULL);
     int length = 0;
     const char* str_iterator = str + start_index; //set the string iterator to the desired starting location on the map string
     while(*str_iterator != '-' && *str_iterator != ';') { //terminate the count as we cross logic terminator in map string
@@ -49,6 +52,8 @@ static int getKeyLengthInMapString(const char *str, int start_index) {
  * @attention no memory is being allocated in this function. key allocation left for the user to do. the key is NULL terminated
  */
 static void getKeyFromMapString(char *key, const char *str) {
+    assert(key != NULL);
+    assert(str != NULL);
     const char* str_iterator = str;
     char* key_iterator = key;
     while (*str_iterator != '-' && *str_iterator != ';') {
@@ -66,6 +71,9 @@ static void getKeyFromMapString(char *key, const char *str) {
  * @param terminator sign to logically terminate the key in the string map
  */
 static void addKeyToMapString(char *string_map_iterator, char* key, char* terminator) {
+    assert(string_map_iterator != NULL);
+    assert(key != NULL);
+    assert(terminator != NULL);
     strcpy(string_map_iterator, key);
     string_map_iterator = string_map_iterator + strlen(key);
     strcpy(string_map_iterator, terminator);
@@ -115,6 +123,7 @@ char* serializerMapToString(Map map) {
 }
 
 Map serializerStringToMap(char* string_map){
+    assert(string_map != NULL);
     Map map = mapCreate();
     if(map == NULL) {
         return NULL;
