@@ -239,6 +239,92 @@ char* electionGetTribeName (Election election, int tribe_id) {
     return tribe_name_copy;
 }
 
+ElectionResult electionSetTribeName (Election election, int tribe_id, const char* tribe_name){
+    if(election == NULL || tribe_name == NULL){
+        return ELECTION_NULL_ARGUMENT;
+    }
+    if(checkId(tribe_id) == false){
+        return ELECTION_INVALID_ID;
+    }
+    if(electionGetTribeName(election, tribe_id) == NULL){
+        return ELECTION_TRIBE_NOT_EXIST;
+    }
+    if(checkName(tribe_name) == false){
+        return ELECTION_INVALID_NAME;
+    }
+
+
+    //checkIsElementExistInMap(election, tribe_id, MAP_TYPE_TRIBE);
+    //Use MapResult to update data in election->tribes, returns MapResult value corresponding to ElectionResult value.
+    //IMO good option, but don't see a way to keep mapPut and use checkIsElementExistInMap function
+
+    int id_size = getNumberOfCharsInInteger(tribe_id);
+    char *tribe_id_str = malloc(id_size);
+    tribe_id_str = intToString(tribe_id);
+
+    MapResult tmp = mapPut(election->tribes, tribe_id_str, tribe_name);
+
+    if(tmp == MAP_OUT_OF_MEMORY){
+        electionDestroy(election);
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    if(tmp == MAP_NULL_ARGUMENT){
+        return ELECTION_NULL_ARGUMENT;
+    }
+
+    if(tmp == MAP_SUCCESS){
+        return ELECTION_SUCCESS;
+    }
+
+    free(tribe_id_str);
+
+    return ELECTION_NULL_ARGUMENT; //Check if this is valid. Otherwise Compilation error, no return value.
+}
+
+/*
+ElectionResult electionAddVote (Election election, int area_id, int tribe_id, int num_of_votes){
+    if(election == NULL){
+        return ELECTION_NULL_ARGUMENT;
+    }
+    if(checkId(tribe_id) == false){
+        return ELECTION_INVALID_ID;
+    }
+    if(checkId(num_of_votes) == false || num_of_votes == MIN_ALLOWED_ID){
+        return ELECTION_INVALID_VOTES;
+    }
+
+    int id_tribe_size = getNumberOfCharsInInteger(tribe_id);
+    char *tribe_id_str = malloc(id_tribe_size);
+    tribe_id_str = intToString(tribe_id);
+
+    if(mapContains(election->tribes, tribe_id_str) == false){
+        return ELECTION_TRIBE_NOT_EXIST;
+    }
+
+
+    int id_area_size = getNumberOfCharsInInteger(area_id);
+    char *area_id_str = malloc(id_area_size);
+    area_id_str = intToString(area_id);
+
+    if(mapContains(election->areas, area_id_str) == false){
+        return ELECTION_AREA_NOT_EXIST;
+    }
+
+    char* serialization = serializerMapToString(election->votes);
+
+
+
+
+
+    free(area_id_str);
+    free(tribe_id_str);
+    free(serialization);
+
+}*/
+
+
+
 #undef NULL_TERMINATOR
 #undef MIN_ALLOWED_LETTER
 #undef MAX_ALLOWED_LETTER
