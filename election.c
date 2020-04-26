@@ -258,17 +258,14 @@ ElectionResult electionSetTribeName (Election election, int tribe_id, const char
         return ELECTION_OUT_OF_MEMORY;
     }
 
-    if(tmp == MAP_NULL_ARGUMENT){
-        return ELECTION_NULL_ARGUMENT;
-    }
-
-    if(tmp == MAP_SUCCESS){
-        return ELECTION_SUCCESS;
-    }
-
+    MapResult add_tribe_map_result = mapPut(election->tribes, tribe_id_str, tribe_name);
     free(tribe_id_str);
 
-    return ELECTION_NULL_ARGUMENT; //Check if this is valid. Otherwise Compilation error, no return value.
+    if(add_tribe_map_result == MAP_OUT_OF_MEMORY){
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    return ELECTION_SUCCESS;
 }
 
 /*
