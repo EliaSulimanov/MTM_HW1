@@ -277,6 +277,35 @@ ElectionResult electionSetTribeName (Election election, int tribe_id, const char
     return ELECTION_SUCCESS;
 }
 
+ElectionResult electionRemoveTribe (Election election, int tribe_id) {
+    if(election == NULL) {
+        return ELECTION_NULL_ARGUMENT;
+    }
+    if(!checkId(tribe_id)) {
+        return ELECTION_INVALID_ID;
+    }
+
+    char* tribe_id_str = intToString(tribe_id);
+    if(tribe_id_str == NULL) {
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    assert(election->tribes != NULL);
+    if(mapRemove(election->tribes, tribe_id_str) == MAP_ITEM_DOES_NOT_EXIST) {
+        free(tribe_id_str);
+        return ELECTION_TRIBE_NOT_EXIST;
+    }
+
+    assert(election->votes != NULL);
+    if(mapRemove(election->votes, tribe_id_str) == MAP_ITEM_DOES_NOT_EXIST) {
+        free(tribe_id_str);
+        return ELECTION_TRIBE_NOT_EXIST;
+    }
+
+    free(tribe_id_str);
+    return ELECTION_SUCCESS;
+}
+
 /*
 ElectionResult electionAddVote (Election election, int area_id, int tribe_id, int num_of_votes){
     if(election == NULL){
