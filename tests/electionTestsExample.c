@@ -3,21 +3,11 @@
 #include "../test_utilities.h"
 
 /*The number of tests*/
-#define NUMBER_TESTS 17
+#define NUMBER_TESTS 28
 
 bool deleteOnlyFirstArea (int area_id) {
 	return area_id == 1;
 }
-
-/*bool testElectionRemoveAreas() {
-	Election election = electionCreate();
-	ASSERT_TEST(electionAddArea(election, 1, "first area") == ELECTION_SUCCESS);
-    ASSERT_TEST(electionAddArea(election, 2, "second area") == ELECTION_SUCCESS);
-
-	ASSERT_TEST(electionRemoveAreas(election, deleteOnlyFirstArea) == ELECTION_SUCCESS);
-	electionDestroy(election);
-	return true;
-}*/
 
 bool testElectionAddTribe() {
     Election election = electionCreate();
@@ -217,6 +207,120 @@ bool testElectionGetTribeNameIsReallyCopy() {
     return true;
 }
 
+bool testElectionSetTribeName() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionSetTribeName(election, 5, "foo") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionSetTribeName(election, 2, "bar") == ELECTION_SUCCESS);
+    char* test_str = electionGetTribeName(election, 5);
+    ASSERT_TEST(strcmp(test_str, "foo") == 0);
+    free(test_str);
+    test_str = electionGetTribeName(election, 2);
+    ASSERT_TEST(strcmp(test_str, "bar") == 0);
+    free(test_str);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionSetTribeNameTribeNotExist() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionSetTribeName(election, 8, "foo") == ELECTION_TRIBE_NOT_EXIST);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionSetTribeNameNullArgumentElection() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionSetTribeName(NULL, 2, "foo") == ELECTION_NULL_ARGUMENT);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionSetTribeNameNullArgumentName() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionSetTribeName(election, 2, NULL) == ELECTION_NULL_ARGUMENT);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionSetTribeNameInvalidName() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionSetTribeName(election, 2, "Foo") == ELECTION_INVALID_NAME);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionSetTribeNameInvalidId() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionSetTribeName(election, -2, "foo") == ELECTION_INVALID_ID);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionRemoveTribe() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionRemoveTribe(election, 5) == ELECTION_SUCCESS);
+    char* test_str = electionGetTribeName(election, 5);
+    if(test_str != NULL) {
+        electionDestroy(election);
+        free(test_str);
+        return false;
+    }
+    electionDestroy(election);
+    free(test_str);
+    return true;
+}
+
+bool testElectionRemoveTribeNullArgument() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionRemoveTribe(NULL, 5) == ELECTION_NULL_ARGUMENT);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionRemoveTribeNotExist() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionRemoveTribe(election, 8) == ELECTION_TRIBE_NOT_EXIST);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionRemoveTribeInvalidId() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddTribe(election, 5, "tribe one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "other tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionRemoveTribe(election, -8) == ELECTION_INVALID_ID);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionRemoveAreas() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 1, "first area") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 2, "second area") == ELECTION_SUCCESS);
+
+    ASSERT_TEST(electionRemoveAreas(election, deleteOnlyFirstArea) == ELECTION_SUCCESS);
+    electionDestroy(election);
+    return true;
+}
+
 /*The functions for the tests should be added here*/
 bool (*tests[]) (void) = {
                       testElectionAddTribe,
@@ -235,7 +339,18 @@ bool (*tests[]) (void) = {
                       testElectionGetTribeNameInvalidId,
                       testElectionGetTribeNameNotExist,
                       testElectionGetTribeNameNullArgument,
-                      testElectionGetTribeNameIsReallyCopy
+                      testElectionGetTribeNameIsReallyCopy,
+                      testElectionSetTribeName,
+                      testElectionSetTribeNameTribeNotExist,
+                      testElectionSetTribeNameNullArgumentElection,
+                      testElectionSetTribeNameNullArgumentName,
+                      testElectionSetTribeNameInvalidName,
+                      testElectionSetTribeNameInvalidId,
+                      testElectionRemoveTribe,
+                      testElectionRemoveTribeNullArgument,
+                      testElectionRemoveTribeNotExist,
+                      testElectionRemoveTribeInvalidId,
+                      testElectionRemoveAreas
 };
 
 /*The names of the test functions should be added here*/
@@ -256,7 +371,18 @@ const char* testNames[] = {
                            "testElectionGetTribeNameInvalidId",
                            "testElectionGetTribeNameNotExist",
                            "testElectionGetTribeNameNullArgument",
-                           "testElectionGetTribeNameIsReallyCopy"
+                           "testElectionGetTribeNameIsReallyCopy",
+                           "testElectionSetTribeName",
+                           "testElectionSetTribeNameTribeNotExist",
+                           "testElectionSetTribeNameNullArgumentElection",
+                           "testElectionSetTribeNameNullArgumentName",
+                           "testElectionSetTribeNameInvalidName",
+                           "testElectionSetTribeNameInvalidId",
+                           "testElectionRemoveTribe",
+                           "testElectionRemoveTribeNullArgument",
+                           "testElectionRemoveTribeNotExist",
+                           "testElectionRemoveTribeInvalidId",
+                           "testElectionRemoveAreas"
 };
 
 int main(int argc, char *argv[]) {
