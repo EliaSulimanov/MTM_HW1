@@ -265,7 +265,6 @@ ElectionResult electionSetTribeName (Election election, int tribe_id, const char
     }
 
     assert(election->tribes != NULL);
-    if(electionGetTribeName(election, tribe_id) == NULL){
     char* tribe_name_exist_check_str = electionGetTribeName(election, tribe_id);
     if(tribe_name_exist_check_str == NULL){
         return ELECTION_TRIBE_NOT_EXIST;
