@@ -243,23 +243,15 @@ char* electionGetTribeName (Election election, int tribe_id) {
 }
 
 ElectionResult electionSetTribeName (Election election, int tribe_id, const char* tribe_name){
-    if(election == NULL || tribe_name == NULL){
-        return ELECTION_NULL_ARGUMENT;
+    ElectionResult arguments_check = checkArguments(election, tribe_id, tribe_name, MAP_TYPE_NULL);
+    if(arguments_check != ELECTION_SUCCESS) {
+        return arguments_check;
     }
-    if(checkId(tribe_id) == false){
-        return ELECTION_INVALID_ID;
-    }
+
+    assert(election->tribes != NULL);
     if(electionGetTribeName(election, tribe_id) == NULL){
         return ELECTION_TRIBE_NOT_EXIST;
     }
-    if(checkName(tribe_name) == false){
-        return ELECTION_INVALID_NAME;
-    }
-
-
-    //checkIsElementExistInMap(election, tribe_id, MAP_TYPE_TRIBE);
-    //Use MapResult to update data in election->tribes, returns MapResult value corresponding to ElectionResult value.
-    //IMO good option, but don't see a way to keep mapPut and use checkIsElementExistInMap function
 
     int id_size = getNumberOfCharsInInteger(tribe_id);
     char *tribe_id_str = malloc(id_size);
