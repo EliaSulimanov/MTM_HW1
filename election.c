@@ -69,6 +69,15 @@ static char* intToString(int number) {
     return str;
 }
 
+static int stringToInt(const char* str) {
+    int num;
+    if(sscanf(str, "%d", &num) != 1) {
+        return -1;
+    }
+    return num;
+}
+
+//TODO: Consider changeing this name
 static ElectionResult checkIsElementExistInMap(Election election, int element_id, MapType map_type) {
     assert(election != NULL);
     assert(map_type != MAP_TYPE_NULL);
