@@ -114,7 +114,6 @@ MapResult mapRemove(Map map, const char* key) {
     nodeSetNext(previous ,nodeGetNext(temp));
 
     nodeDestroy(temp);
-    free(temp_key);
     map->size--;
     return MAP_SUCCESS;
 }
