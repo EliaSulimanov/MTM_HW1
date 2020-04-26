@@ -191,7 +191,7 @@ ElectionResult electionAddTribe (Election election, int tribe_id, const char* tr
         return ELECTION_OUT_OF_MEMORY;
     }
 
-    map_put_result = mapPut(election->votes, tribe_id_string, "\n");
+    map_put_result = mapPut(election->votes, tribe_id_string, "");
     free(tribe_id_string);
 
     if(map_put_result == MAP_OUT_OF_MEMORY) {
@@ -325,7 +325,6 @@ ElectionResult electionRemoveAreas(Election election, AreaConditionFunction shou
 
     MAP_FOREACH(key, election->areas) {
         if(should_delete_area(stringToInt(key))) {
-            mapRemove(election->areas, key); //assuming its success
             if(mapGetSize(election->votes) > 0) {
                 Map deserialized_map = serializerStringToMap(mapGet(election->votes, key));
                 if(deserialized_map == NULL) {
@@ -346,6 +345,7 @@ ElectionResult electionRemoveAreas(Election election, AreaConditionFunction shou
                 free(serialized_map);
                 mapDestroy(deserialized_map);
             }
+            mapRemove(election->areas, key); //assuming its success
         }
     }
 
