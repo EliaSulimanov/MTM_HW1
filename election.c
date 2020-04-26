@@ -306,6 +306,39 @@ ElectionResult electionRemoveTribe (Election election, int tribe_id) {
     return ELECTION_SUCCESS;
 }
 
+ElectionResult electionRemoveAreas(Election election, AreaConditionFunction should_delete_area) {
+    if(election == NULL || should_delete_area == NULL) {
+        return ELECTION_NULL_ARGUMENT;
+    }
+
+    MAP_FOREACH(key, election->areas) {
+        if(should_delete_area(stringToInt(key))) {
+            mapRemove(election->areas, key); //assuming its success
+
+            Map deserialized_map = serializerStringToMap(mapGet(election->votes, key));
+            if(deserialized_map == NULL) {
+                return ELECTION_OUT_OF_MEMORY;
+            }
+            mapRemove(deserialized_map, key);
+
+            char* serialized_map = serializerMapToString(deserialized_map);
+            if(serialized_map == NULL) {
+                mapDestroy(deserialized_map);
+                return ELECTION_OUT_OF_MEMORY;
+            }
+            MapResult map_put_result = mapPut(election->votes, key, serialized_map);
+            if(map_put_result == MAP_OUT_OF_MEMORY) {
+                return ELECTION_OUT_OF_MEMORY;
+            }
+
+            free(serialized_map);
+            mapDestroy(deserialized_map);
+        }
+    }
+
+    return ELECTION_SUCCESS;
+}
+
 /*
 ElectionResult electionAddVote (Election election, int area_id, int tribe_id, int num_of_votes){
     if(election == NULL){
