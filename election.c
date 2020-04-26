@@ -321,6 +321,9 @@ ElectionResult electionRemoveAreas(Election election, AreaConditionFunction shou
         return ELECTION_NULL_ARGUMENT;
     }
 
+    assert(election->areas != NULL);
+    assert(election->votes != NULL);
+
     MAP_FOREACH(key, election->areas) {
         if(should_delete_area(stringToInt(key))) {
             mapRemove(election->areas, key); //assuming its success
