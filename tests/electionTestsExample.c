@@ -3,7 +3,7 @@
 #include "../test_utilities.h"
 
 /*The number of tests*/
-#define NUMBER_TESTS 28
+#define NUMBER_TESTS 29
 
 bool deleteOnlyFirstArea (int area_id) {
 	return area_id == 1;
@@ -321,6 +321,18 @@ bool testElectionRemoveAreas() {
     return true;
 }
 
+bool testElectionRemoveAreasTribeExist() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 1, "first area") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 2, "second area") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 1, "first tribe") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 2, "second tribe") == ELECTION_SUCCESS);
+
+    ASSERT_TEST(electionRemoveAreas(election, deleteOnlyFirstArea) == ELECTION_SUCCESS);
+    electionDestroy(election);
+    return true;
+}
+
 /*The functions for the tests should be added here*/
 bool (*tests[]) (void) = {
                       testElectionAddTribe,
@@ -350,7 +362,8 @@ bool (*tests[]) (void) = {
                       testElectionRemoveTribeNullArgument,
                       testElectionRemoveTribeNotExist,
                       testElectionRemoveTribeInvalidId,
-                      testElectionRemoveAreas
+                      testElectionRemoveAreas,
+                      testElectionRemoveAreasTribeExist
 };
 
 /*The names of the test functions should be added here*/
@@ -382,7 +395,8 @@ const char* testNames[] = {
                            "testElectionRemoveTribeNullArgument",
                            "testElectionRemoveTribeNotExist",
                            "testElectionRemoveTribeInvalidId",
-                           "testElectionRemoveAreas"
+                           "testElectionRemoveAreas",
+                           "testElectionRemoveAreasTribeExist"
 };
 
 int main(int argc, char *argv[]) {
