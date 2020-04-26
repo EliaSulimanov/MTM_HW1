@@ -20,7 +20,8 @@ struct election_t {
 
 typedef enum {
     MAP_TYPE_TRIBE,
-    MAP_TYPE_AREA
+    MAP_TYPE_AREA,
+    MAP_TYPE_NULL
 } MapType;
 
 static bool checkName(const char* name) {
@@ -70,7 +71,7 @@ static char* intToString(int number) {
 
 static ElectionResult checkIsElementExistInMap(Election election, int element_id, MapType map_type) {
     assert(election != NULL);
-
+    assert(map_type != MAP_TYPE_NULL);
     char *id_string = intToString(element_id);
     if(id_string == NULL) {
         return ELECTION_OUT_OF_MEMORY;
@@ -110,9 +111,11 @@ static ElectionResult checkArguments(Election election, int id, const char* name
         return ELECTION_INVALID_NAME;
     }
 
-    ElectionResult is_exist_result = checkIsElementExistInMap(election, id, map_type);
-    if(is_exist_result != ELECTION_SUCCESS) {
-        return is_exist_result;
+    if(map_type != MAP_TYPE_NULL) { //passing MAP_TYPE_NULL will skip this check.
+        ElectionResult is_exist_result = checkIsElementExistInMap(election, id, map_type);
+        if(is_exist_result != ELECTION_SUCCESS) {
+            return is_exist_result;
+        }
     }
 
     return ELECTION_SUCCESS;
