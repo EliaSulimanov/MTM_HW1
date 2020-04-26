@@ -253,14 +253,8 @@ ElectionResult electionSetTribeName (Election election, int tribe_id, const char
         return ELECTION_TRIBE_NOT_EXIST;
     }
 
-    int id_size = getNumberOfCharsInInteger(tribe_id);
-    char *tribe_id_str = malloc(id_size);
-    tribe_id_str = intToString(tribe_id);
-
-    MapResult tmp = mapPut(election->tribes, tribe_id_str, tribe_name);
-
-    if(tmp == MAP_OUT_OF_MEMORY){
-        electionDestroy(election);
+    char *tribe_id_str = intToString(tribe_id);
+    if(tribe_id_str == NULL) {
         return ELECTION_OUT_OF_MEMORY;
     }
 
