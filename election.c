@@ -87,7 +87,7 @@ static int stringToInt(const char* str) {
 }
 
 //TODO: Consider changeing this name
-static ElectionResult checkIsElementExistInMap(Election election, int element_id, MapType map_type) {
+static ElectionResult checkIsElementNotExistInMap(Election election, int element_id, MapType map_type) {
     assert(election != NULL);
     assert(map_type != MAP_TYPE_NULL);
     char *id_string = intToString(element_id);
@@ -130,7 +130,7 @@ static ElectionResult checkArguments(Election election, int id, const char* name
     }
 
     if(map_type != MAP_TYPE_NULL) { //passing MAP_TYPE_NULL will skip this check.
-        ElectionResult is_exist_result = checkIsElementExistInMap(election, id, map_type);
+        ElectionResult is_exist_result = checkIsElementNotExistInMap(election, id, map_type);
         if(is_exist_result != ELECTION_SUCCESS) {
             return is_exist_result;
         }
@@ -297,7 +297,7 @@ char* electionGetTribeName (Election election, int tribe_id) {
     }
 
     assert(election->tribes != NULL);
-    if(checkIsElementExistInMap(election, tribe_id, MAP_TYPE_TRIBE) != ELECTION_TRIBE_ALREADY_EXIST) {
+    if(checkIsElementNotExistInMap(election, tribe_id, MAP_TYPE_TRIBE) != ELECTION_TRIBE_ALREADY_EXIST) {
         return NULL;
     }
 
