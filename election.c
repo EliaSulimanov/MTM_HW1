@@ -376,26 +376,6 @@ ElectionResult electionRemoveAreas(Election election, AreaConditionFunction shou
     }
 
     MAP_FOREACH(key, election->areas) {
-        if(should_delete_area(stringToInt(key))) {
-            if(mapGetSize(election->votes) > 0) {
-                Map deserialized_map = serializerStringToMap(mapGet(election->votes, key));
-                if(deserialized_map == NULL) {
-                    return ELECTION_OUT_OF_MEMORY;
-                }
-                mapRemove(deserialized_map, key);
-
-                char* serialized_map = serializerMapToString(deserialized_map);
-                if(serialized_map == NULL) {
-                    mapDestroy(deserialized_map);
-                    return ELECTION_OUT_OF_MEMORY;
-                }
-                MapResult map_put_result = mapPut(election->votes, key, serialized_map);
-                if(map_put_result == MAP_OUT_OF_MEMORY) {
-                    return ELECTION_OUT_OF_MEMORY;
-                }
-
-                free(serialized_map);
-                mapDestroy(deserialized_map);
             }
             mapRemove(election->areas, key); //assuming its success
         }
