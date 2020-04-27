@@ -13,6 +13,14 @@
 #define MIN_ALLOWED_VOTES 0
 #define TEN 10
 
+#define VOTES_MANIPULATION_FREE(return_val)     \
+    do {                                        \
+        mapDestroy(deserialized_map_tribe);     \
+        free(tribe_id_str);                     \
+        free(area_id_str);                      \
+        return return_val;                      \
+    } while(0)
+
 struct election_t {
     Map tribes;
     Map areas;
@@ -424,14 +432,19 @@ ElectionResult electionAddVote (Election election, int area_id, int tribe_id, in
 
 
 
+                VOTES_MANIPULATION_FREE(ELECTION_OUT_OF_MEMORY);
 
+                VOTES_MANIPULATION_FREE(ELECTION_OUT_OF_MEMORY);
 
-    free(area_id_str);
-    free(tribe_id_str);
-    free(serialization);
+            char* serialized_map_str = serializerMapToString(deserialized_map_tribe);
+            if(serialized_map_str == NULL) {
+                VOTES_MANIPULATION_FREE(ELECTION_OUT_OF_MEMORY);
+            }
 
 }*/
+                VOTES_MANIPULATION_FREE(ELECTION_OUT_OF_MEMORY);
 
+            VOTES_MANIPULATION_FREE(MAP_SUCCESS);
 
 
 #undef NULL_TERMINATOR
