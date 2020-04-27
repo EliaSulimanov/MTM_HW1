@@ -38,7 +38,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-std=c99 --pedantic-errors -Wall -Werror -g -DNOUTOFMEMORY -g  "
+					"fragment" : "-std=c99 --pedantic-errors -Wall -Werror -g -g  "
 				}
 			],
 			"language" : "C",
@@ -58,7 +58,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-std=c99 --pedantic-errors -Wall -Werror -g -DNOUTOFMEMORY -g",
+				"fragment" : "-std=c99 --pedantic-errors -Wall -Werror -g -g",
 				"role" : "flags"
 			},
 			{
