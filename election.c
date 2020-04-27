@@ -10,6 +10,7 @@
 #define MAX_ALLOWED_LETTER 'z'
 #define SPECIAL_ALLOWED_LETTER ' '
 #define MIN_ALLOWED_ID 0
+#define MIN_ALLOWED_VOTES 0
 #define TEN 10
 
 struct election_t {
