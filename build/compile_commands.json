@@ -1,22 +1,27 @@
 [
 {
   "directory": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build",
-  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g -g   -o CMakeFiles/hw1.dir/main.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c",
-  "file": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c"
+  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g -DNOUTOFMEMORY -g   -o CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/electionTestsExample.c",
+  "file": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/electionTestsExample.c"
 },
 {
   "directory": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build",
-  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g -g   -o CMakeFiles/hw1.dir/mtm_map/map.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c",
+  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g -DNOUTOFMEMORY -g   -o CMakeFiles/hw1.dir/mtm_map/map.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c",
   "file": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c"
 },
 {
   "directory": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build",
-  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g -g   -o CMakeFiles/hw1.dir/mtm_map/node.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.c",
+  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g -DNOUTOFMEMORY -g   -o CMakeFiles/hw1.dir/mtm_map/node.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.c",
   "file": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.c"
 },
 {
   "directory": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build",
-  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g -g   -o CMakeFiles/hw1.dir/election.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/election.c",
+  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g -DNOUTOFMEMORY -g   -o CMakeFiles/hw1.dir/election.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/election.c",
   "file": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/election.c"
+},
+{
+  "directory": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build",
+  "command": "C:/TDM-GCC-64/bin/gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g -DNOUTOFMEMORY -g   -o CMakeFiles/hw1.dir/map_serializer.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.c",
+  "file": "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.c"
 }
 ]

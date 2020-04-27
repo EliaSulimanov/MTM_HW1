@@ -170,32 +170,32 @@ election.c.s:
 	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/election.c.s
 .PHONY : election.c.s
 
-main.obj: main.c.obj
+map_serializer.obj: map_serializer.c.obj
 
-.PHONY : main.obj
+.PHONY : map_serializer.obj
 
 # target to build an object file
-main.c.obj:
-	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/main.c.obj
-.PHONY : main.c.obj
+map_serializer.c.obj:
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/map_serializer.c.obj
+.PHONY : map_serializer.c.obj
 
-main.i: main.c.i
+map_serializer.i: map_serializer.c.i
 
-.PHONY : main.i
+.PHONY : map_serializer.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/main.c.i
-.PHONY : main.c.i
+map_serializer.c.i:
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/map_serializer.c.i
+.PHONY : map_serializer.c.i
 
-main.s: main.c.s
+map_serializer.s: map_serializer.c.s
 
-.PHONY : main.s
+.PHONY : map_serializer.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/main.c.s
-.PHONY : main.c.s
+map_serializer.c.s:
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/map_serializer.c.s
+.PHONY : map_serializer.c.s
 
 mtm_map/map.obj: mtm_map/map.c.obj
 
@@ -251,6 +251,33 @@ mtm_map/node.c.s:
 	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/mtm_map/node.c.s
 .PHONY : mtm_map/node.c.s
 
+tests/electionTestsExample.obj: tests/electionTestsExample.c.obj
+
+.PHONY : tests/electionTestsExample.obj
+
+# target to build an object file
+tests/electionTestsExample.c.obj:
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj
+.PHONY : tests/electionTestsExample.c.obj
+
+tests/electionTestsExample.i: tests/electionTestsExample.c.i
+
+.PHONY : tests/electionTestsExample.i
+
+# target to preprocess a source file
+tests/electionTestsExample.c.i:
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/tests/electionTestsExample.c.i
+.PHONY : tests/electionTestsExample.c.i
+
+tests/electionTestsExample.s: tests/electionTestsExample.c.s
+
+.PHONY : tests/electionTestsExample.s
+
+# target to generate assembly for a file
+tests/electionTestsExample.c.s:
+	$(MAKE) -f CMakeFiles/hw1.dir/build.make CMakeFiles/hw1.dir/tests/electionTestsExample.c.s
+.PHONY : tests/electionTestsExample.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -263,15 +290,18 @@ help:
 	@echo "... election.obj"
 	@echo "... election.i"
 	@echo "... election.s"
-	@echo "... main.obj"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... map_serializer.obj"
+	@echo "... map_serializer.i"
+	@echo "... map_serializer.s"
 	@echo "... mtm_map/map.obj"
 	@echo "... mtm_map/map.i"
 	@echo "... mtm_map/map.s"
 	@echo "... mtm_map/node.obj"
 	@echo "... mtm_map/node.i"
 	@echo "... mtm_map/node.s"
+	@echo "... tests/electionTestsExample.obj"
+	@echo "... tests/electionTestsExample.i"
+	@echo "... tests/electionTestsExample.s"
 .PHONY : help
 
 

@@ -38,7 +38,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-std=c99 --pedantic-errors -Wall -Werror -g -g  "
+					"fragment" : "-std=c99 --pedantic-errors -Wall -Werror -g -DNOUTOFMEMORY -g  "
 				}
 			],
 			"language" : "C",
@@ -47,7 +47,8 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4
 			]
 		}
 	],
@@ -57,7 +58,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-std=c99 --pedantic-errors -Wall -Werror -g -g",
+				"fragment" : "-std=c99 --pedantic-errors -Wall -Werror -g -DNOUTOFMEMORY -g",
 				"role" : "flags"
 			},
 			{
@@ -87,7 +88,8 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4
 			]
 		}
 	],
@@ -96,7 +98,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "main.c",
+			"path" : "tests/electionTestsExample.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -115,6 +117,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "election.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "map_serializer.c",
 			"sourceGroupIndex" : 0
 		}
 	],

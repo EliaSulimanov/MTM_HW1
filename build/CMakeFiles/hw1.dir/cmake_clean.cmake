@@ -1,8 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/hw1.dir/election.c.obj"
-  "CMakeFiles/hw1.dir/main.c.obj"
+  "CMakeFiles/hw1.dir/map_serializer.c.obj"
   "CMakeFiles/hw1.dir/mtm_map/map.c.obj"
   "CMakeFiles/hw1.dir/mtm_map/node.c.obj"
+  "CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj"
   "hw1.exe"
   "hw1.exe.manifest"
   "hw1.pdb"

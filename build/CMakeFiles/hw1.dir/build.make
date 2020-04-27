@@ -77,18 +77,18 @@ include CMakeFiles/hw1.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/hw1.dir/flags.make
 
-CMakeFiles/hw1.dir/main.c.obj: CMakeFiles/hw1.dir/flags.make
-CMakeFiles/hw1.dir/main.c.obj: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/hw1.dir/main.c.obj"
-	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/hw1.dir/main.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c
+CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj: CMakeFiles/hw1.dir/flags.make
+CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj: ../tests/electionTestsExample.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj"
+	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/electionTestsExample.c
 
-CMakeFiles/hw1.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw1.dir/main.c.i"
-	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c > CMakeFiles/hw1.dir/main.c.i
+CMakeFiles/hw1.dir/tests/electionTestsExample.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw1.dir/tests/electionTestsExample.c.i"
+	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/electionTestsExample.c > CMakeFiles/hw1.dir/tests/electionTestsExample.c.i
 
-CMakeFiles/hw1.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw1.dir/main.c.s"
-	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/main.c -o CMakeFiles/hw1.dir/main.c.s
+CMakeFiles/hw1.dir/tests/electionTestsExample.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw1.dir/tests/electionTestsExample.c.s"
+	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/electionTestsExample.c -o CMakeFiles/hw1.dir/tests/electionTestsExample.c.s
 
 CMakeFiles/hw1.dir/mtm_map/map.c.obj: CMakeFiles/hw1.dir/flags.make
 CMakeFiles/hw1.dir/mtm_map/map.c.obj: ../mtm_map/map.c
@@ -129,27 +129,42 @@ CMakeFiles/hw1.dir/election.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw1.dir/election.c.s"
 	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/election.c -o CMakeFiles/hw1.dir/election.c.s
 
+CMakeFiles/hw1.dir/map_serializer.c.obj: CMakeFiles/hw1.dir/flags.make
+CMakeFiles/hw1.dir/map_serializer.c.obj: ../map_serializer.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/hw1.dir/map_serializer.c.obj"
+	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/hw1.dir/map_serializer.c.obj   -c C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.c
+
+CMakeFiles/hw1.dir/map_serializer.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hw1.dir/map_serializer.c.i"
+	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.c > CMakeFiles/hw1.dir/map_serializer.c.i
+
+CMakeFiles/hw1.dir/map_serializer.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hw1.dir/map_serializer.c.s"
+	C:/TDM-GCC-64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.c -o CMakeFiles/hw1.dir/map_serializer.c.s
+
 # Object files for target hw1
 hw1_OBJECTS = \
-"CMakeFiles/hw1.dir/main.c.obj" \
+"CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj" \
 "CMakeFiles/hw1.dir/mtm_map/map.c.obj" \
 "CMakeFiles/hw1.dir/mtm_map/node.c.obj" \
-"CMakeFiles/hw1.dir/election.c.obj"
+"CMakeFiles/hw1.dir/election.c.obj" \
+"CMakeFiles/hw1.dir/map_serializer.c.obj"
 
 # External object files for target hw1
 hw1_EXTERNAL_OBJECTS =
 
-hw1.exe: CMakeFiles/hw1.dir/main.c.obj
+hw1.exe: CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj
 hw1.exe: CMakeFiles/hw1.dir/mtm_map/map.c.obj
 hw1.exe: CMakeFiles/hw1.dir/mtm_map/node.c.obj
 hw1.exe: CMakeFiles/hw1.dir/election.c.obj
+hw1.exe: CMakeFiles/hw1.dir/map_serializer.c.obj
 hw1.exe: CMakeFiles/hw1.dir/build.make
 hw1.exe: CMakeFiles/hw1.dir/linklibs.rsp
 hw1.exe: CMakeFiles/hw1.dir/objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable hw1.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable hw1.exe"
 	"C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/hw1.dir/objects.a
 	C:/TDM-GCC-64/bin/ar.exe cr CMakeFiles/hw1.dir/objects.a @CMakeFiles/hw1.dir/objects1.rsp
-	C:/TDM-GCC-64/bin/gcc.exe -std=c99 --pedantic-errors -Wall -Werror -g -g   -Wl,--whole-archive CMakeFiles/hw1.dir/objects.a -Wl,--no-whole-archive  -o hw1.exe -Wl,--out-implib,libhw1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/hw1.dir/linklibs.rsp
+	C:/TDM-GCC-64/bin/gcc.exe -std=c99 --pedantic-errors -Wall -Werror -g -DNOUTOFMEMORY -g   -Wl,--whole-archive CMakeFiles/hw1.dir/objects.a -Wl,--no-whole-archive  -o hw1.exe -Wl,--out-implib,libhw1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/hw1.dir/linklibs.rsp
 
 # Rule to build all files generated by this target.
 CMakeFiles/hw1.dir/build: hw1.exe
