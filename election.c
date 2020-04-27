@@ -130,6 +130,51 @@ static ElectionResult checkArguments(Election election, int id, const char* name
     return ELECTION_SUCCESS;
 }
 
+static ElectionResult electionRemoveElementFromSerializedMap(Election election, char* key, AreaConditionFunction should_delete_area) {
+    /*election->votes data is a serialized map, represented by string.
+    * we deserializing this string into a map.
+    */
+    Map deserialized_map_tribe = serializerStringToMap(mapGet(election->votes, key));
+    if(deserialized_map_tribe == NULL) {
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    assert(key != NULL);
+    assert(election->areas != NULL);
+    MAP_FOREACH(area_key, election->areas) {
+        if(should_delete_area(stringToInt(area_key))) {
+            /*we check each area key exist, if the key stands by the condition,
+            * the area votes will be removed from the tribe votes.
+            */
+            mapRemove(deserialized_map_tribe, area_key);
+        }
+    }
+
+    //we serializing the map (without the area) to a string
+#ifndef DNMEMORYTEST
+    char* serialized_map_str = serializerMapToString(deserialized_map_tribe);
+#else
+    char* serialized_map_str = NULL;
+#endif
+    if(serialized_map_str == NULL) {
+        mapDestroy(deserialized_map_tribe);
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    //we assinging the serialized map to the tribe votes.
+    assert(election->votes != NULL);
+    MapResult put_new_string = mapPut(election->votes, key, serialized_map_str);
+    if(put_new_string == MAP_OUT_OF_MEMORY) {
+        free(serialized_map_str);
+        mapDestroy(deserialized_map_tribe);
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    free(serialized_map_str);
+    mapDestroy(deserialized_map_tribe);
+    return ELECTION_SUCCESS;
+}
+
 Election electionCreate() {
     Election election = malloc(sizeof(*election));
     if(election == NULL){
