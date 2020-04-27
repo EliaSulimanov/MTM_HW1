@@ -376,11 +376,17 @@ ElectionResult electionRemoveAreas(Election election, AreaConditionFunction shou
     }
 
     MAP_FOREACH(key, election->areas) {
+        assert(key != NULL);
+        if(should_delete_area(stringToInt(key)) == true){
+            MapResult remove_area = mapRemove(election->areas, key);
+            if(remove_area == MAP_ITEM_DOES_NOT_EXIST){
+                return ELECTION_AREA_NOT_EXIST;
             }
-            mapRemove(election->areas, key); //assuming its success
+            if(remove_area == MAP_SUCCESS){
+                return ELECTION_SUCCESS;
+            }
         }
     }
-
     return ELECTION_SUCCESS;
 }
 
