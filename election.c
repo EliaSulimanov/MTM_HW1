@@ -184,6 +184,20 @@ static ElectionResult electionRemoveElementFromSerializedMap(Election election, 
     return ELECTION_SUCCESS;
 }
 
+static ElectionResult checkVoteArgument(Election election, int id, MapType map_type) {
+    if(election == NULL) {
+        return ELECTION_NULL_ARGUMENT;
+    }
+    if(!checkId(id)) {
+        return ELECTION_INVALID_ID;
+    }
+    if(checkIsElementNotExistInMap(election, id, map_type) == ELECTION_SUCCESS){
+        return ELECTION_AREA_NOT_EXIST;
+    }
+    return ELECTION_SUCCESS;
+}
+
+
 Election electionCreate() {
     Election election = malloc(sizeof(*election));
     if(election == NULL){
@@ -403,20 +417,20 @@ ElectionResult electionRemoveAreas(Election election, AreaConditionFunction shou
 ElectionResult electionAddVote (Election election, int area_id, int tribe_id, int num_of_votes){
     if(election == NULL){
         return ELECTION_NULL_ARGUMENT;
+    ElectionResult arguments_check_result = checkVoteArgument(election, area_id, MAP_TYPE_AREA);
+    if(arguments_check_result != ELECTION_SUCCESS) {
+        return arguments_check_result;
     }
-    if(checkId(tribe_id) == false){
-        return ELECTION_INVALID_ID;
+
+    arguments_check_result = checkVoteArgument(election, tribe_id, MAP_TYPE_TRIBE);
+    if(arguments_check_result != ELECTION_SUCCESS) {
+        return arguments_check_result;
     }
-    if(checkId(num_of_votes) == false || num_of_votes == MIN_ALLOWED_ID){
+
+    if(num_of_votes < MIN_ALLOWED_VOTES) {
         return ELECTION_INVALID_VOTES;
     }
 
-    int id_tribe_size = getNumberOfCharsInInteger(tribe_id);
-    char *tribe_id_str = malloc(id_tribe_size);
-    tribe_id_str = intToString(tribe_id);
-
-    if(mapContains(election->tribes, tribe_id_str) == false){
-        return ELECTION_TRIBE_NOT_EXIST;
     }
 
 
