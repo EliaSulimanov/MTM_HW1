@@ -3,7 +3,7 @@
 #include "../test_utilities.h"
 
 /*The number of tests*/
-#define NUMBER_TESTS 29
+#define NUMBER_TESTS 31
 
 bool deleteOnlyFirstArea (int area_id) {
 	return area_id == 1;
@@ -328,10 +328,25 @@ bool testElectionRemoveAreasTribeExist() {
     ASSERT_TEST(electionAddTribe(election, 1, "first tribe") == ELECTION_SUCCESS);
     ASSERT_TEST(electionAddTribe(election, 2, "second tribe") == ELECTION_SUCCESS);
 
+    ASSERT_TEST_WITH_FREE(electionRemoveAreas(election, deleteOnlyFirstArea) == ELECTION_SUCCESS, electionDestroy(election));
+    return true;
+}
+
+bool testElectionsRemoveAreaDoesNotExist() {
+    Election election = electionCreate();
     ASSERT_TEST(electionRemoveAreas(election, deleteOnlyFirstArea) == ELECTION_SUCCESS);
     electionDestroy(election);
     return true;
 }
+
+bool testElectionRemoveAreaNullArgument() {
+    ASSERT_TEST(electionRemoveAreas(NULL, deleteOnlyFirstArea) == ELECTION_NULL_ARGUMENT);
+    Election election = electionCreate();
+    ASSERT_TEST(electionRemoveAreas(election, NULL) == ELECTION_NULL_ARGUMENT);
+    electionDestroy(election);
+    return true;
+}
+
 
 /*The functions for the tests should be added here*/
 bool (*tests[]) (void) = {
@@ -363,7 +378,9 @@ bool (*tests[]) (void) = {
                       testElectionRemoveTribeNotExist,
                       testElectionRemoveTribeInvalidId,
                       testElectionRemoveAreas,
-                      testElectionRemoveAreasTribeExist
+                      testElectionRemoveAreasTribeExist,
+                      testElectionsRemoveAreaDoesNotExist,
+                      testElectionRemoveAreaNullArgument
 };
 
 /*The names of the test functions should be added here*/
@@ -396,7 +413,9 @@ const char* testNames[] = {
                            "testElectionRemoveTribeNotExist",
                            "testElectionRemoveTribeInvalidId",
                            "testElectionRemoveAreas",
-                           "testElectionRemoveAreasTribeExist"
+                           "testElectionRemoveAreasTribeExist",
+                           "testElectionsRemoveAreaDoesNotExist",
+                           "testElectionRemoveAreaNullArgument"
 };
 
 int main(int argc, char *argv[]) {
