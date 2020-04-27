@@ -413,10 +413,7 @@ ElectionResult electionRemoveAreas(Election election, AreaConditionFunction shou
     return ELECTION_SUCCESS;
 }
 
-/*
-ElectionResult electionAddVote (Election election, int area_id, int tribe_id, int num_of_votes){
-    if(election == NULL){
-        return ELECTION_NULL_ARGUMENT;
+ElectionResult electionAddVote (Election election, int area_id, int tribe_id, int num_of_votes) {    
     ElectionResult arguments_check_result = checkVoteArgument(election, area_id, MAP_TYPE_AREA);
     if(arguments_check_result != ELECTION_SUCCESS) {
         return arguments_check_result;
@@ -431,39 +428,74 @@ ElectionResult electionAddVote (Election election, int area_id, int tribe_id, in
         return ELECTION_INVALID_VOTES;
     }
 
+    char* tribe_id_str = intToString(tribe_id);
+    if(tribe_id_str == NULL) {
+        return ELECTION_OUT_OF_MEMORY;
     }
 
-
-    int id_area_size = getNumberOfCharsInInteger(area_id);
-    char *area_id_str = malloc(id_area_size);
-    area_id_str = intToString(area_id);
-
-    if(mapContains(election->areas, area_id_str) == false){
-        return ELECTION_AREA_NOT_EXIST;
+    char* area_id_str = intToString(area_id);
+    if(area_id_str == NULL) {
+        return ELECTION_OUT_OF_MEMORY;
     }
 
-    char* serialization = serializerMapToString(election->votes);
+    assert(election->votes != NULL);
 
+    MAP_FOREACH(key, election->votes) {
+        assert(key != NULL);
+        if(strcmp(key, tribe_id_str) == 0) {
+            /*election->votes data is a serialized map, represented by string.
+            * we deserializing this string into a map.
+            */
+            Map deserialized_map_tribe = serializerStringToMap(mapGet(election->votes, key));
+            if(deserialized_map_tribe == NULL) {
+                return ELECTION_OUT_OF_MEMORY;
+            }
 
-
+            int number_of_current_votes = stringToInt(mapGet(deserialized_map_tribe, area_id_str));
+            if(number_of_current_votes < MIN_ALLOWED_VOTES) {
+                number_of_current_votes = MIN_ALLOWED_VOTES;
+            }
+            number_of_current_votes += num_of_votes;
+            /*number_of_current_votes -= num_of_votes;
+            if(number_of_current_votes < MIN_ALLOWED_ID){
+                number_of_current_votes = MIN_ALLOWED_ID;
+            }*/
+            char *num_of_votes_str = intToString(number_of_current_votes);
+            if(num_of_votes_str == NULL) {
                 VOTES_MANIPULATION_FREE(ELECTION_OUT_OF_MEMORY);
+            }
 
+            MapResult map_put_result = mapPut(deserialized_map_tribe, area_id_str, num_of_votes_str);
+            free(num_of_votes_str);
+            if(map_put_result == MAP_OUT_OF_MEMORY) {
                 VOTES_MANIPULATION_FREE(ELECTION_OUT_OF_MEMORY);
+            }
 
             char* serialized_map_str = serializerMapToString(deserialized_map_tribe);
             if(serialized_map_str == NULL) {
                 VOTES_MANIPULATION_FREE(ELECTION_OUT_OF_MEMORY);
             }
 
-}*/
+            MapResult put_new_string = mapPut(election->votes, key, serialized_map_str);
+            if(put_new_string == MAP_OUT_OF_MEMORY) {
+                free(serialized_map_str);
                 VOTES_MANIPULATION_FREE(ELECTION_OUT_OF_MEMORY);
+            }
 
+            free(serialized_map_str);
             VOTES_MANIPULATION_FREE(MAP_SUCCESS);
+        }
+    }
 
+    free(tribe_id_str);
+    free(area_id_str);
+    return ELECTION_TRIBE_NOT_EXIST;
+}
 
 #undef NULL_TERMINATOR
 #undef MIN_ALLOWED_LETTER
 #undef MAX_ALLOWED_LETTER
 #undef SPECIAL_ALLOWED_LETTER
 #undef MIN_ALLOWED_ID
+#undef MIN_ALLOWED_VOTES
 #undef TEN
