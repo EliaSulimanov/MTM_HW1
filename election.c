@@ -368,6 +368,13 @@ ElectionResult electionRemoveAreas(Election election, AreaConditionFunction shou
     assert(election->areas != NULL);
     assert(election->votes != NULL);
 
+    MAP_FOREACH(key, election->votes) {
+       ElectionResult remove_area_votes_return = electionRemoveElementFromSerializedMap(election, key, should_delete_area);
+        if(remove_area_votes_return != ELECTION_SUCCESS) {
+            return remove_area_votes_return;
+        }
+    }
+
     MAP_FOREACH(key, election->areas) {
         if(should_delete_area(stringToInt(key))) {
             if(mapGetSize(election->votes) > 0) {
