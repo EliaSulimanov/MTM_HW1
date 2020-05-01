@@ -145,6 +145,7 @@ static ElectionResult checkIsElementExistInMap(Election election, int id, MapTyp
     return ELECTION_SUCCESS;
 }
 
+static ElectionResult checkAddElementArguments(Election election, int id, const char* name, MapType map_type) {
     if(election == NULL || name == NULL) {
         return ELECTION_NULL_ARGUMENT;
     }
@@ -212,15 +213,19 @@ static ElectionResult electionRemoveElementFromSerializedMap(Election election, 
     return ELECTION_SUCCESS;
 }
 
-static ElectionResult checkVoteArgument(Election election, int id, MapType map_type) {
-    if(election == NULL) {
-        return ELECTION_NULL_ARGUMENT;
+static ElectionResult checkAddVotesArguments (Election election, int area_id, int tribe_id, int num_of_votes) {
+    ElectionResult arguments_check_result = checkIsElementExistInMap(election, area_id, MAP_TYPE_AREA);
+    if(arguments_check_result != ELECTION_SUCCESS) {
+        return arguments_check_result;
     }
-    if(!checkId(id)) {
-        return ELECTION_INVALID_ID;
+
+    arguments_check_result = checkIsElementExistInMap(election, tribe_id, MAP_TYPE_TRIBE);
+    if(arguments_check_result != ELECTION_SUCCESS) {
+        return arguments_check_result;
     }
-    if(checkIsElementNotExistInMap(election, id, map_type) == ELECTION_SUCCESS){
-        return ELECTION_AREA_NOT_EXIST;
+
+    if(num_of_votes <= MIN_ALLOWED_VOTES) {
+        return ELECTION_INVALID_VOTES;
     }
     return ELECTION_SUCCESS;
 }
