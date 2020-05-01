@@ -100,9 +100,10 @@ static int stringToInt(const char* str) {
     return num;
 }
 
-//TODO: Consider changeing this name
 static ElectionResult checkIsElementNotExistInMap(Election election, int element_id, MapType map_type) {
-    assert(election != NULL);
+    if(election == NULL) {
+        return ELECTION_NULL_ARGUMENT;
+    }
     assert(map_type != MAP_TYPE_NULL);
     char *id_string = intToString(element_id);
     if(id_string == NULL) {
