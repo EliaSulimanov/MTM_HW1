@@ -530,10 +530,11 @@ ElectionResult electionAddVote (Election election, int area_id, int tribe_id, in
     return arguments_check_result;
 }
 
+ElectionResult electionRemoveVote (Election election, int area_id, int tribe_id, int num_of_votes) {
+    ElectionResult arguments_check_result = changeNumberOfVotes(election, area_id, tribe_id, num_of_votes, MANIPULATION_TYPE_REMOVE);
+    return arguments_check_result;
+}
 
-    char* tribe_id_str = intToString(tribe_id);
-    if(tribe_id_str == NULL) {
-        return ELECTION_OUT_OF_MEMORY;
     }
 
     char* area_id_str = intToString(area_id);
