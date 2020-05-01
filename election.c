@@ -91,6 +91,9 @@ static char* intToString(int number) {
 
 static int stringToInt(const char* str) {
     int num;
+    if(str == NULL) {
+        return MIN_ALLOWED_VOTES;
+    }
     if(sscanf(str, "%d", &num) != 1) {
         return -1;
     }
