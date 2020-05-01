@@ -158,9 +158,9 @@ static ElectionResult checkIsElementExistInMap(Election election, int id, MapTyp
     }
 
     if(map_type != MAP_TYPE_NULL) { //passing MAP_TYPE_NULL will skip this check.
-        ElectionResult is_exist_result = checkIsElementNotExistInMap(election, id, map_type);
-        if(is_exist_result != ELECTION_SUCCESS) {
-            return is_exist_result;
+        ElectionResult not_exist_result = checkIsElementNotExistInMap(election, id, map_type);
+        if(not_exist_result != ELECTION_SUCCESS) {
+            return not_exist_result;
         }
     }
 
