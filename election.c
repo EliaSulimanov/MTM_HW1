@@ -535,11 +535,14 @@ ElectionResult electionRemoveVote (Election election, int area_id, int tribe_id,
     return arguments_check_result;
 }
 
+Map electionComputeAreasToTribesMapping (Election election) {
+    if(election == NULL) {
+        return NULL;
     }
 
-    char* area_id_str = intToString(area_id);
-    if(area_id_str == NULL) {
-        return ELECTION_OUT_OF_MEMORY;
+    Map most_voted_tribe_in_area_map = mapCreate();
+    if(most_voted_tribe_in_area_map == NULL) {
+        return NULL;
     }
 
     assert(election->votes != NULL);
