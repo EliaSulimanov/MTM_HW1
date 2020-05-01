@@ -353,7 +353,7 @@ void electionDestroy(Election election) {
 }
 
 ElectionResult electionAddTribe (Election election, int tribe_id, const char* tribe_name) {
-    ElectionResult arguments_check = checkArguments(election, tribe_id, tribe_name, MAP_TYPE_TRIBE);
+    ElectionResult arguments_check = checkAddElementArguments(election, tribe_id, tribe_name, MAP_TYPE_TRIBE);
     if(arguments_check != ELECTION_SUCCESS) {
         return arguments_check;
     }
@@ -382,7 +382,7 @@ ElectionResult electionAddTribe (Election election, int tribe_id, const char* tr
 }
 
 ElectionResult electionAddArea(Election election, int area_id, const char* area_name) {
-    ElectionResult arguments_check = checkArguments(election, area_id, area_name, MAP_TYPE_AREA);
+    ElectionResult arguments_check = checkAddElementArguments(election, area_id, area_name, MAP_TYPE_AREA);
     if(arguments_check != ELECTION_SUCCESS) {
         return arguments_check;
     }
@@ -439,7 +439,7 @@ char* electionGetTribeName (Election election, int tribe_id) {
 }
 
 ElectionResult electionSetTribeName (Election election, int tribe_id, const char* tribe_name){
-    ElectionResult arguments_check = checkArguments(election, tribe_id, tribe_name, MAP_TYPE_NULL);
+    ElectionResult arguments_check = checkAddElementArguments(election, tribe_id, tribe_name, MAP_TYPE_NULL);
     if(arguments_check != ELECTION_SUCCESS) {
         return arguments_check;
     }
