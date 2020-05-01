@@ -13,12 +13,18 @@
 #define MIN_ALLOWED_VOTES 0
 #define TEN 10
 
-#define VOTES_MANIPULATION_FREE(return_val)     \
-    do {                                        \
-        mapDestroy(deserialized_map_tribe);     \
-        free(tribe_id_str);                     \
-        free(area_id_str);                      \
-        return return_val;                      \
+#define VOTES_MANIPULATION_FREE(additional_command, return_val)     \
+    do {                                                            \
+        free(tribe_id_str);                                         \
+        free(area_id_str);                                          \
+        additional_command;                                         \
+        return return_val;                                          \
+    } while(0)
+
+#define VOTES_MANIPULATION_FREE_AND_DESTROY(additional_command, return_val) \
+    do {                                                                    \
+        mapDestroy(deserialized_map_tribe);                                 \
+        VOTES_MANIPULATION_FREE(additional_command, return_val);            \
     } while(0)
 
 struct election_t {
@@ -197,6 +203,10 @@ static ElectionResult checkVoteArgument(Election election, int id, MapType map_t
     return ELECTION_SUCCESS;
 }
 
+                VOTES_MANIPULATION_FREE_AND_DESTROY((void)0,ELECTION_OUT_OF_MEMORY);
+                VOTES_MANIPULATION_FREE_AND_DESTROY(free(serialized_map_str), ELECTION_OUT_OF_MEMORY);
+            VOTES_MANIPULATION_FREE_AND_DESTROY(free(serialized_map_str), ELECTION_SUCCESS);
+    VOTES_MANIPULATION_FREE((void)0, ELECTION_TRIBE_NOT_EXIST);
 
 Election electionCreate() {
     Election election = malloc(sizeof(*election));
