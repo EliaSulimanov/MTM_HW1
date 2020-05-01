@@ -39,6 +39,11 @@ typedef enum {
     MAP_TYPE_NULL
 } MapType;
 
+typedef enum {
+    MANIPULATION_TYPE_ADD,
+    MANIPULATION_TYPE_REMOVE
+} ManipulationType;
+
 static bool checkName(const char* name) {
     const char *name_iterator = name;
     while(*name_iterator != NULL_TERMINATOR) {
@@ -203,10 +208,85 @@ static ElectionResult checkVoteArgument(Election election, int id, MapType map_t
     return ELECTION_SUCCESS;
 }
 
+static ElectionResult changeNumberOfVotesInDeserializedMap(Map deserialized_map_tribe, char* tribe_id_str, char* area_id_str,
+                                                           ManipulationType manipulation_type, int num_of_votes) {
+
+    assert(deserialized_map_tribe != NULL);
+    assert(tribe_id_str != NULL);
+    assert(area_id_str != NULL);
+    int number_of_current_votes = stringToInt(mapGet(deserialized_map_tribe, area_id_str));
+    assert(number_of_current_votes >= MIN_ALLOWED_VOTES);
+
+    if(manipulation_type == MANIPULATION_TYPE_ADD) {
+        number_of_current_votes += num_of_votes;
+    } else {
+        number_of_current_votes -= num_of_votes;
+        if(number_of_current_votes < MIN_ALLOWED_VOTES){
+            number_of_current_votes = MIN_ALLOWED_VOTES;
+        }
+    }
+    char *num_of_votes_str = intToString(number_of_current_votes);
+    if(num_of_votes_str == NULL) {
+        VOTES_MANIPULATION_FREE((void)0,ELECTION_OUT_OF_MEMORY);
+    }
+
+    MapResult map_put_result = mapPut(deserialized_map_tribe, area_id_str, num_of_votes_str);
+    free(num_of_votes_str);
+    if(map_put_result == MAP_OUT_OF_MEMORY) {
+        VOTES_MANIPULATION_FREE((void)0, ELECTION_OUT_OF_MEMORY);
+    }
+    return ELECTION_SUCCESS;
+}
+
+static ElectionResult changeNumberOfVotes (Election election, int area_id, int tribe_id, int num_of_votes, ManipulationType manipulation_type) {
+    ElectionResult arguments_check_result = checkAddVotesArguments(election, area_id, tribe_id, num_of_votes);
+    if(arguments_check_result != ELECTION_SUCCESS) {
+        return arguments_check_result;
+    }
+
+    char* tribe_id_str = intToString(tribe_id);
+    if(tribe_id_str == NULL) {
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    char* area_id_str = intToString(area_id);
+    if(area_id_str == NULL) {
+        free(tribe_id_str);
+        return ELECTION_OUT_OF_MEMORY;
+    }
+
+    assert(election->votes != NULL);
+
+    MAP_FOREACH(key, election->votes) {
+        assert(key != NULL);
+        if(strcmp(key, tribe_id_str) == 0) {
+            //election->votes data is a serialized map, represented by string. we deserializing this string into a map.
+            Map deserialized_map_tribe = serializerStringToMap(mapGet(election->votes, key));
+            if(deserialized_map_tribe == NULL) {
+                VOTES_MANIPULATION_FREE((void)0, ELECTION_TRIBE_NOT_EXIST);
+            }
+
+            ElectionResult change_votes_result = changeNumberOfVotesInDeserializedMap(deserialized_map_tribe, tribe_id_str, area_id_str, manipulation_type, num_of_votes);
+            if(change_votes_result != ELECTION_SUCCESS) {
+                return change_votes_result;
+            }
+
+            char* serialized_map_str = serializerMapToString(deserialized_map_tribe);
+            if(serialized_map_str == NULL) {
                 VOTES_MANIPULATION_FREE_AND_DESTROY((void)0,ELECTION_OUT_OF_MEMORY);
+            }
+
+            MapResult put_new_string = mapPut(election->votes, key, serialized_map_str);
+            if(put_new_string == MAP_OUT_OF_MEMORY) {
                 VOTES_MANIPULATION_FREE_AND_DESTROY(free(serialized_map_str), ELECTION_OUT_OF_MEMORY);
+            }
+
             VOTES_MANIPULATION_FREE_AND_DESTROY(free(serialized_map_str), ELECTION_SUCCESS);
+        }
+    }
+
     VOTES_MANIPULATION_FREE((void)0, ELECTION_TRIBE_NOT_EXIST);
+}
 
 Election electionCreate() {
     Election election = malloc(sizeof(*election));
