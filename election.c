@@ -131,7 +131,20 @@ static ElectionResult checkIsElementNotExistInMap(Election election, int element
     return ELECTION_SUCCESS;
 }
 
-static ElectionResult checkArguments(Election election, int id, const char* name, MapType map_type) {
+static ElectionResult checkIsElementExistInMap(Election election, int id, MapType map_type) {
+    ElectionResult not_in_map_result = checkIsElementNotExistInMap(election, id, map_type);
+    if(not_in_map_result == ELECTION_SUCCESS){ //element not exist
+        return map_type == MAP_TYPE_AREA ? ELECTION_AREA_NOT_EXIST : ELECTION_TRIBE_NOT_EXIST;
+    }
+    if(not_in_map_result == ELECTION_OUT_OF_MEMORY) {
+        return ELECTION_OUT_OF_MEMORY;
+    }
+    if(not_in_map_result == ELECTION_NULL_ARGUMENT) {
+        return ELECTION_NULL_ARGUMENT;
+    }
+    return ELECTION_SUCCESS;
+}
+
     if(election == NULL || name == NULL) {
         return ELECTION_NULL_ARGUMENT;
     }
