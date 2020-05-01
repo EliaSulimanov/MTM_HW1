@@ -545,58 +545,9 @@ Map electionComputeAreasToTribesMapping (Election election) {
         return NULL;
     }
 
-    assert(election->votes != NULL);
+    
 
-    MAP_FOREACH(key, election->votes) {
-        assert(key != NULL);
-        if(strcmp(key, tribe_id_str) == 0) {
-            /*election->votes data is a serialized map, represented by string.
-            * we deserializing this string into a map.
-            */
-            Map deserialized_map_tribe = serializerStringToMap(mapGet(election->votes, key));
-            if(deserialized_map_tribe == NULL) {
-                return ELECTION_OUT_OF_MEMORY;
-            }
-
-            int number_of_current_votes = stringToInt(mapGet(deserialized_map_tribe, area_id_str));
-            if(number_of_current_votes < MIN_ALLOWED_VOTES) {
-                number_of_current_votes = MIN_ALLOWED_VOTES;
-            }
-            number_of_current_votes += num_of_votes;
-            /*number_of_current_votes -= num_of_votes;
-            if(number_of_current_votes < MIN_ALLOWED_ID){
-                number_of_current_votes = MIN_ALLOWED_ID;
-            }*/
-            char *num_of_votes_str = intToString(number_of_current_votes);
-            if(num_of_votes_str == NULL) {
-                VOTES_MANIPULATION_FREE(ELECTION_OUT_OF_MEMORY);
-            }
-
-            MapResult map_put_result = mapPut(deserialized_map_tribe, area_id_str, num_of_votes_str);
-            free(num_of_votes_str);
-            if(map_put_result == MAP_OUT_OF_MEMORY) {
-                VOTES_MANIPULATION_FREE(ELECTION_OUT_OF_MEMORY);
-            }
-
-            char* serialized_map_str = serializerMapToString(deserialized_map_tribe);
-            if(serialized_map_str == NULL) {
-                VOTES_MANIPULATION_FREE(ELECTION_OUT_OF_MEMORY);
-            }
-
-            MapResult put_new_string = mapPut(election->votes, key, serialized_map_str);
-            if(put_new_string == MAP_OUT_OF_MEMORY) {
-                free(serialized_map_str);
-                VOTES_MANIPULATION_FREE(ELECTION_OUT_OF_MEMORY);
-            }
-
-            free(serialized_map_str);
-            VOTES_MANIPULATION_FREE(MAP_SUCCESS);
-        }
-    }
-
-    free(tribe_id_str);
-    free(area_id_str);
-    return ELECTION_TRIBE_NOT_EXIST;
+    return most_voted_tribe_in_area_map;
 }
 
 #undef NULL_TERMINATOR
