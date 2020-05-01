@@ -3,7 +3,7 @@
 #include "../test_utilities.h"
 
 /*The number of tests*/
-#define NUMBER_TESTS 31
+#define NUMBER_TESTS 37
 
 bool deleteOnlyFirstArea (int area_id) {
 	return area_id == 1;
@@ -329,6 +329,7 @@ bool testElectionRemoveAreasTribeExist() {
     ASSERT_TEST(electionAddTribe(election, 2, "second tribe") == ELECTION_SUCCESS);
 
     ASSERT_TEST_WITH_FREE(electionRemoveAreas(election, deleteOnlyFirstArea) == ELECTION_SUCCESS, electionDestroy(election));
+    electionDestroy(election);
     return true;
 }
 
@@ -347,6 +348,59 @@ bool testElectionRemoveAreaNullArgument() {
     return true;
 }
 
+bool testElectionAddVote() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 51, "area fifty one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 101010, "tribe of aliens") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddVote(election, 51, 101010, 30) == ELECTION_SUCCESS);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionAddVoteNullArgument() {
+    ASSERT_TEST(electionAddVote(NULL, 51, 101010, 30) == ELECTION_NULL_ARGUMENT);
+    return true;
+}
+
+bool testElectionAddVoteAreaNotExist() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 51, "area fifty one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 101010, "tribe of aliens") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddVote(election, 5, 101010, 30) == ELECTION_AREA_NOT_EXIST);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionAddVoteTribeNotExist() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 51, "area fifty one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 101010, "tribe of aliens") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddVote(election, 51, 10110, 30) == ELECTION_TRIBE_NOT_EXIST);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionAddVoteTribeInvalidVotes() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 51, "area fifty one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 101010, "tribe of aliens") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddVote(election, 51, 101010, 0) == ELECTION_INVALID_VOTES);
+    ASSERT_TEST(electionAddVote(election, 51, 101010, -5) == ELECTION_INVALID_VOTES);
+    electionDestroy(election);
+    return true;
+}
+
+bool testElectionRemoveVote() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 51, "area fifty one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 101010, "tribe of aliens") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddVote(election, 51, 101010, 30) == ELECTION_SUCCESS);
+    ASSERT_TEST(electionRemoveVote(election, 51, 101010, 5) == ELECTION_SUCCESS);
+    ASSERT_TEST(electionRemoveVote(election, 51, 101010, 500) == ELECTION_SUCCESS);
+    ASSERT_TEST(electionRemoveVote(election, 51, 101010, 500) == ELECTION_SUCCESS);
+    electionDestroy(election);
+    return true;
+}
 
 /*The functions for the tests should be added here*/
 bool (*tests[]) (void) = {
@@ -380,7 +434,13 @@ bool (*tests[]) (void) = {
                       testElectionRemoveAreas,
                       testElectionRemoveAreasTribeExist,
                       testElectionsRemoveAreaDoesNotExist,
-                      testElectionRemoveAreaNullArgument
+                      testElectionRemoveAreaNullArgument,
+                      testElectionAddVote,
+                      testElectionAddVoteNullArgument,
+                      testElectionAddVoteAreaNotExist,
+                      testElectionAddVoteTribeNotExist,
+                      testElectionAddVoteTribeInvalidVotes,
+                      testElectionRemoveVote
 };
 
 /*The names of the test functions should be added here*/
@@ -415,7 +475,13 @@ const char* testNames[] = {
                            "testElectionRemoveAreas",
                            "testElectionRemoveAreasTribeExist",
                            "testElectionsRemoveAreaDoesNotExist",
-                           "testElectionRemoveAreaNullArgument"
+                           "testElectionRemoveAreaNullArgument",
+                           "testElectionAddVote",
+                           "testElectionAddVoteNullArgument",
+                           "testElectionAddVoteAreaNotExist",
+                           "testElectionAddVoteTribeNotExist",
+                           "testElectionAddVoteTribeInvalidVotes",
+                           "testElectionRemoveVote"
 };
 
 int main(int argc, char *argv[]) {
