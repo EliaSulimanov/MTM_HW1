@@ -12,6 +12,8 @@
 #define MIN_ALLOWED_ID 0
 #define MIN_ALLOWED_VOTES 0
 #define TEN 10
+#define ONE 1
+#define INVALID_SIZE -1
 
 #define VOTES_MANIPULATION_FREE(additional_command, return_val)     \
     do {                                                            \
