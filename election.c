@@ -535,6 +535,7 @@ ElectionResult electionRemoveVote (Election election, int area_id, int tribe_id,
     return arguments_check_result;
 }
 
+/*
 Map electionComputeAreasToTribesMapping (Election election) {
     if(election == NULL) {
         return NULL;
@@ -545,10 +546,73 @@ Map electionComputeAreasToTribesMapping (Election election) {
         return NULL;
     }
 
-    
+    int area_size = mapGetSize(election->areas);
+    int tribe_size = mapGetSize(election->tribes);
+    if (area_size == INVALID_SIZE || tribe_size == INVALID_SIZE){
+        mapDestroy(most_voted_tribe_in_area_map);
+        return NULL;
+    }
+
+    //char *arr_votes_area_by_tribe[area_size +ONE][tribe_size+ONE] = {{NULL}};
+    char** arr_votes_area_by_tribe = malloc(area_size*tribe_size);
+
+
+    int iterator = ONE;
+    MAP_FOREACH(key, election->areas){
+        *(arr_votes_area_by_tribe+iterator*tribe_size) = key;
+        iterator++;
+        if(iterator > area_size){
+            mapDestroy(most_voted_tribe_in_area_map);
+            return NULL;
+        }
+    }
+    //copied bit for tribe names
+    iterator = ONE;
+    MAP_FOREACH(key, election->tribes){
+        *(arr_votes_area_by_tribe+iterator) = key;
+        iterator++;
+        if(iterator > tribe_size){
+            mapDestroy(most_voted_tribe_in_area_map);
+            return NULL;
+        }
+    }
+
+    MAP_FOREACH(tribe_key, election->votes){
+        Map deserialized_map_tribe = serializerStringToMap(mapGet(election->votes, tribe_key));
+        if(deserialized_map_tribe == NULL) {
+            return NULL;
+        }
+        MAP_FOREACH(area_key, deserialized_map_tribe){
+            //tribe_id is tribe_key
+            //area_id if area_key
+            int area_id, tribe_id;
+            for(int i=1; i<area_size; ++i){
+                if(strcmp(*(arr_votes_area_by_tribe+i*tribe_size), area_key) == 0){
+                    area_id = i;
+                    break;
+                }
+            }
+            for(int j=1; j<tribe_size ; ++j){
+                if(strcmp(*(arr_votes_area_by_tribe+j), tribe_key) == 0){
+                    tribe_id = j;
+                    break;
+                }
+            }
+
+
+            int num_of_votes = stringToInt(mapGet(deserialized_map_tribe,area_key));
+            int sum = stringToInt(arr_votes_area_by_tribe[area_id][tribe_id]);
+            arr_votes_area_by_tribe[area_id][tribe_id] = intToString(sum+num_of_votes);
+
+        }
+    }
+
+
+
 
     return most_voted_tribe_in_area_map;
 }
+ */
 
 #undef NULL_TERMINATOR
 #undef MIN_ALLOWED_LETTER
@@ -557,3 +621,5 @@ Map electionComputeAreasToTribesMapping (Election election) {
 #undef MIN_ALLOWED_ID
 #undef MIN_ALLOWED_VOTES
 #undef TEN
+#undef ONE
+#undef INVALID_SIZE
