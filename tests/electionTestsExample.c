@@ -3,7 +3,7 @@
 #include "../test_utilities.h"
 
 /*The number of tests*/
-#define NUMBER_TESTS 37
+#define NUMBER_TESTS 38
 
 bool deleteOnlyFirstArea (int area_id) {
 	return area_id == 1;
@@ -402,6 +402,25 @@ bool testElectionRemoveVote() {
     return true;
 }
 
+bool testElectionComputeAreasToTribesMapping() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 42, "area forty two") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 17, "tribe seventeen") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 27, "tribe twenty seven") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddVote(election, 42, 17, 200) == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddVote(election, 42, 27, 100) == ELECTION_SUCCESS);
+    Map map_by_tribes = electionComputeAreasToTribesMapping(election);
+    electionDestroy(election);
+
+    if(map_by_tribes == NULL) return false;
+    if(strcmp(mapGet(map_by_tribes, "42"), "17") == 0){
+        return true;
+    }
+    ASSERT_TEST(mapGet(map_by_tribes, "42") == "17");
+
+}
+
+
 /*The functions for the tests should be added here*/
 bool (*tests[]) (void) = {
                       testElectionAddTribe,
@@ -440,7 +459,8 @@ bool (*tests[]) (void) = {
                       testElectionAddVoteAreaNotExist,
                       testElectionAddVoteTribeNotExist,
                       testElectionAddVoteTribeInvalidVotes,
-                      testElectionRemoveVote
+                      testElectionRemoveVote,
+                      testElectionComputeAreasToTribesMapping
 };
 
 /*The names of the test functions should be added here*/
@@ -481,7 +501,8 @@ const char* testNames[] = {
                            "testElectionAddVoteAreaNotExist",
                            "testElectionAddVoteTribeNotExist",
                            "testElectionAddVoteTribeInvalidVotes",
-                           "testElectionRemoveVote"
+                           "testElectionRemoveVote",
+                           "testElectionComputeAreasToTribesMapping"
 };
 
 int main(int argc, char *argv[]) {

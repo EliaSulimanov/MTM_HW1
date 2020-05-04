@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/election.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/hw1.dir/election.c.obj"
-  "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/map_serializer.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/hw1.dir/map_serializer.c.obj"
-  "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/map.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/hw1.dir/mtm_map/map.c.obj"
-  "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/mtm_map/node.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/hw1.dir/mtm_map/node.c.obj"
-  "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/tests/electionTestsExample.c" "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj"
+  "C:/Users/Iron/Documents/GitHub/MTM_HW1/election.c" "C:/Users/Iron/Documents/GitHub/MTM_HW1/cmake-build-debug/CMakeFiles/hw1.dir/election.c.obj"
+  "C:/Users/Iron/Documents/GitHub/MTM_HW1/map_serializer.c" "C:/Users/Iron/Documents/GitHub/MTM_HW1/cmake-build-debug/CMakeFiles/hw1.dir/map_serializer.c.obj"
+  "C:/Users/Iron/Documents/GitHub/MTM_HW1/mtm_map/map.c" "C:/Users/Iron/Documents/GitHub/MTM_HW1/cmake-build-debug/CMakeFiles/hw1.dir/mtm_map/map.c.obj"
+  "C:/Users/Iron/Documents/GitHub/MTM_HW1/mtm_map/node.c" "C:/Users/Iron/Documents/GitHub/MTM_HW1/cmake-build-debug/CMakeFiles/hw1.dir/mtm_map/node.c.obj"
+  "C:/Users/Iron/Documents/GitHub/MTM_HW1/tests/electionTestsExample.c" "C:/Users/Iron/Documents/GitHub/MTM_HW1/cmake-build-debug/CMakeFiles/hw1.dir/tests/electionTestsExample.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
