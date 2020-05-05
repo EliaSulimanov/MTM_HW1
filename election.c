@@ -548,14 +548,18 @@ Map electionComputeAreasToTribesMapping (Election election) {
         return NULL;
     }
 
-    int area_size = mapGetSize(election->areas);
-    int tribe_size = mapGetSize(election->tribes);
+    int area_size = ONE + mapGetSize(election->areas);
+    int tribe_size = ONE + mapGetSize(election->tribes);
     if (area_size == INVALID_SIZE || tribe_size == INVALID_SIZE){
         mapDestroy(most_voted_tribe_in_area_map);
         return NULL;
     }
 
     char** arr_votes_area_by_tribe = malloc(area_size*tribe_size);
+    if(arr_votes_area_by_tribe == NULL){
+        mapDestroy(most_voted_tribe_in_area_map);
+        return NULL;
+    }
 
     //copy area names in first column, tribe names in first row. (0,0) in array is NULL.
     int iterator = ONE;
@@ -563,6 +567,7 @@ Map electionComputeAreasToTribesMapping (Election election) {
         *(arr_votes_area_by_tribe+iterator*tribe_size) = key;
         iterator++;
         if(iterator > area_size){
+            free(arr_votes_area_by_tribe);
             mapDestroy(most_voted_tribe_in_area_map);
             return NULL;
         }
