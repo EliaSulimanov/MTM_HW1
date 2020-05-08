@@ -102,6 +102,24 @@ static int stringToInt(const char* str) {
     return num;
 }
 
+static char* getMaxElement(Map map) {
+    int max_size = 0;
+    char* biggest_key = mapGetFirst(map);
+    MAP_FOREACH(key, map) {
+        char* key_size = mapGet(map, key);
+        if(max_size < stringToInt(key_size)) {
+            biggest_key = key;
+            max_size = stringToInt(key_size);
+        }
+        if(max_size == stringToInt(key_size)) {
+            if(stringToInt(key) < stringToInt(biggest_key)) {
+                biggest_key = key;
+            }
+        }
+    }
+    return biggest_key;
+}
+
 static ElectionResult checkIsElementNotExistInMap(Election election, int element_id, MapType map_type) {
     if(election == NULL) {
         return ELECTION_NULL_ARGUMENT;
