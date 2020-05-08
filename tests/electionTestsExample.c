@@ -3,7 +3,7 @@
 #include "../test_utilities.h"
 
 /*The number of tests*/
-#define NUMBER_TESTS 38
+#define NUMBER_TESTS 39
 
 bool deleteOnlyFirstArea (int area_id) {
 	return area_id == 1;
@@ -405,19 +405,52 @@ bool testElectionRemoveVote() {
 bool testElectionComputeAreasToTribesMapping() {
     Election election = electionCreate();
     ASSERT_TEST(electionAddArea(election, 42, "area forty two") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 51, "area fithty one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 4, "area four") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 5, "area five") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 6, "area six") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 7, "area seven") == ELECTION_SUCCESS);
+
     ASSERT_TEST(electionAddTribe(election, 17, "tribe seventeen") == ELECTION_SUCCESS);
     ASSERT_TEST(electionAddTribe(election, 27, "tribe twenty seven") == ELECTION_SUCCESS);
+    
     ASSERT_TEST(electionAddVote(election, 42, 17, 200) == ELECTION_SUCCESS);
     ASSERT_TEST(electionAddVote(election, 42, 27, 100) == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddVote(election, 51, 17, 30) == ELECTION_SUCCESS);
+
     Map map_by_tribes = electionComputeAreasToTribesMapping(election);
+    ASSERT_TEST(strcmp(mapGet(map_by_tribes, "42"), "17") == 0);
+    ASSERT_TEST(strcmp(mapGet(map_by_tribes, "51"), "17") == 0);
+    ASSERT_TEST(strcmp(mapGet(map_by_tribes, "7"), "17") == 0);
+    ASSERT_TEST(strcmp(mapGet(map_by_tribes, "4"), "17") == 0);
+
     electionDestroy(election);
+    mapDestroy(map_by_tribes);
+    return true;
+}
 
-    if(map_by_tribes == NULL) return false;
-    if(strcmp(mapGet(map_by_tribes, "42"), "17") == 0){
-        return true;
-    }
-    ASSERT_TEST(mapGet(map_by_tribes, "42") == "17");
+bool testElectionComputeAreasToTribesMappingRemoveVotes() {
+    Election election = electionCreate();
+    ASSERT_TEST(electionAddArea(election, 42, "area forty two") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 51, "area fithty one") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddArea(election, 4, "area four") == ELECTION_SUCCESS);
 
+    ASSERT_TEST(electionAddTribe(election, 17, "tribe seventeen") == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddTribe(election, 27, "tribe twenty seven") == ELECTION_SUCCESS);
+
+    ASSERT_TEST(electionAddVote(election, 42, 17, 200) == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddVote(election, 42, 27, 100) == ELECTION_SUCCESS);
+    ASSERT_TEST(electionAddVote(election, 51, 17, 30) == ELECTION_SUCCESS);
+    ASSERT_TEST(electionRemoveVote(election, 42, 17, 310) == ELECTION_SUCCESS);
+
+    Map map_by_tribes = electionComputeAreasToTribesMapping(election);
+    ASSERT_TEST(strcmp(mapGet(map_by_tribes, "42"), "27") == 0);
+    ASSERT_TEST(strcmp(mapGet(map_by_tribes, "51"), "17") == 0);
+    ASSERT_TEST(strcmp(mapGet(map_by_tribes, "4"), "17") == 0);
+
+    electionDestroy(election);
+    mapDestroy(map_by_tribes);
+    return true;
 }
 
 
@@ -460,7 +493,8 @@ bool (*tests[]) (void) = {
                       testElectionAddVoteTribeNotExist,
                       testElectionAddVoteTribeInvalidVotes,
                       testElectionRemoveVote,
-                      testElectionComputeAreasToTribesMapping
+                      testElectionComputeAreasToTribesMapping,
+                      testElectionComputeAreasToTribesMappingRemoveVotes
 };
 
 /*The names of the test functions should be added here*/
@@ -502,7 +536,8 @@ const char* testNames[] = {
                            "testElectionAddVoteTribeNotExist",
                            "testElectionAddVoteTribeInvalidVotes",
                            "testElectionRemoveVote",
-                           "testElectionComputeAreasToTribesMapping"
+                           "testElectionComputeAreasToTribesMapping",
+                           "testElectionComputeAreasToTribesMappingRemoveVotes"
 };
 
 int main(int argc, char *argv[]) {
