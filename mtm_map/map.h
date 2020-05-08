@@ -15,16 +15,16 @@
 * The following functions are available:
 *   mapCreate		- Creates a new empty map
 *   mapDestroy		- Deletes an existing map and frees all resources
-*   mapCopy		    - Copies an existing map
+*   mapCopy		- Copies an existing map
 *   mapGetSize		- Returns the size of a given map
-*   mapContains	    - returns weather or not a key exists inside the map.
+*   mapContains	- returns weather or not a key exists inside the map.
 *   mapPut		    - Gives a specific key a given value.
 *   				  If the key exists, the value is overridden.
 *   mapGet  	    - Returns the data paired to a key which matches the given key.
 *					  Iterator status unchanged
 *   mapRemove		- Removes a pair of (key,data) elements for which the key
 *                    matches a given element (using the strcmp function).
-*   mapGetFirst	    - Sets the internal iterator to the first key in the
+*   mapGetFirst	- Sets the internal iterator to the first key in the
 *   				  map, and returns it.
 *   mapGetNext		- Advances the internal iterator to the next key and
 *   				  returns it.
@@ -139,7 +139,7 @@ char* mapGet(Map map, const char* key);
 * 	The data element associated with this key will also be freed.
 * @return
 * 	MAP_NULL_ARGUMENT if a NULL was sent to the function
-*   MAP_ITEM_DOES_NOT_EXIST if an equal key item does not already exists in the map
+*  MAP_ITEM_DOES_NOT_EXIST if an equal key item does not already exists in the map
 * 	MAP_SUCCESS the paired elements had been removed successfully
 */
 MapResult mapRemove(Map map, const char* key);

@@ -27,7 +27,7 @@ Node nodeCreate(const char* key, const char* value, Node next) {
         return NULL;
     }
     strcpy(node->key, key);
-    node->key[strlen(key)] = NULL_TERMINATOR; //TODO: check if breaks tests
+    node->key[strlen(key)] = NULL_TERMINATOR;
 
     node->value = malloc(strlen(value) + 1);
     if(node->value == NULL) {
@@ -36,7 +36,7 @@ Node nodeCreate(const char* key, const char* value, Node next) {
         return NULL;
     }
     strcpy(node->value, value);
-    node->value[strlen(value)] = NULL_TERMINATOR; //TODO: check if breaks tests
+    node->value[strlen(value)] = NULL_TERMINATOR;
 
     node->next = next;
 
@@ -64,7 +64,7 @@ bool nodeSetValue(Node node, const char* value) {
         return false;
     }
     strcpy(node->value, value);
-    node->value[strlen(value)] = NULL_TERMINATOR; //TODO: check if breaks tests
+    node->value[strlen(value)] = NULL_TERMINATOR;
 
     return true;
 }
