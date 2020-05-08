@@ -555,102 +555,37 @@ ElectionResult electionRemoveVote (Election election, int area_id, int tribe_id,
     return arguments_check_result;
 }
 
-
 Map electionComputeAreasToTribesMapping (Election election) {
-    if(election == NULL) {
+    Map computedMap = mapCreate();
+    if(computedMap == NULL) {
         return NULL;
     }
 
-    Map most_voted_tribe_in_area_map = mapCreate();
-    if(most_voted_tribe_in_area_map == NULL) {
-        return NULL;
-    }
-
-    int area_size = ONE + mapGetSize(election->areas);
-    int tribe_size = ONE + mapGetSize(election->tribes);
-    if (area_size == INVALID_SIZE || tribe_size == INVALID_SIZE){
-        mapDestroy(most_voted_tribe_in_area_map);
-        return NULL;
-    }
-
-    char** arr_votes_area_by_tribe = malloc(area_size*tribe_size);
-    if(arr_votes_area_by_tribe == NULL){
-        mapDestroy(most_voted_tribe_in_area_map);
-        return NULL;
-    }
-
-    //copy area names in first column, tribe names in first row. (0,0) in array is NULL.
-    int iterator = ONE;
-    MAP_FOREACH(key, election->areas){
-        *(arr_votes_area_by_tribe+iterator*tribe_size) = key;
-        iterator++;
-        if(iterator > area_size){
-            free(arr_votes_area_by_tribe);
-            mapDestroy(most_voted_tribe_in_area_map);
+    MAP_FOREACH(area, election->votes) {
+        Map deserialized_map = serializerStringToMap(mapGet(election->votes, area));
+        if(deserialized_map == NULL) {
+            mapDestroy(computedMap);
             return NULL;
         }
-    }
-    //copied bit for tribe names
-    iterator = ONE;
-    MAP_FOREACH(key, election->tribes){
-        *(arr_votes_area_by_tribe+iterator) = key;
-        iterator++;
-        if(iterator > tribe_size){
-            mapDestroy(most_voted_tribe_in_area_map);
+
+        char* most_voted_tribe = getMaxElement(deserialized_map);
+        if(most_voted_tribe == NULL) {
+            mapDestroy(deserialized_map);
+            mapDestroy(computedMap);
             return NULL;
         }
-    }
 
-    //deserialize each map in votes to initialize into array
-    MAP_FOREACH(tribe_key, election->votes){
-        Map deserialized_map_tribe = serializerStringToMap(mapGet(election->votes, tribe_key));
-        if(deserialized_map_tribe == NULL) {
+        if(mapPut(computedMap, area, most_voted_tribe) != MAP_SUCCESS) {
+            mapDestroy(deserialized_map);
+            mapDestroy(computedMap);
             return NULL;
         }
-        MAP_FOREACH(area_key, deserialized_map_tribe){
-            //tribe_id is tribe_key
-            //area_id if area_key
-            int area_id =ONE, tribe_id =ONE;
-            for(int i=1; i<area_size; ++i){
-                if(strcmp(*(arr_votes_area_by_tribe+i*tribe_size), area_key) == 0){
-                    area_id = i;
-                    break;
-                }
-            }
-            for(int j=1; j<tribe_id ; ++j){
-                if(strcmp(*(arr_votes_area_by_tribe+j), tribe_key) == 0){
-                    tribe_id = j;
-                    break;
-                }
-            }
 
-            int num_of_votes = stringToInt(mapGet(deserialized_map_tribe,area_key));
-            int sum = stringToInt(*(arr_votes_area_by_tribe+area_id*area_size+tribe_id));
-            *(arr_votes_area_by_tribe+area_id*area_size+tribe_id) = intToString(sum+num_of_votes);
-
-        }
+        mapDestroy(deserialized_map);
     }
 
-    //search every row of area for tribe with highest votes
-
-    for(int row=ONE; row<area_size; ++row){
-        int highest_votes = 0;
-        char* highest_tribe_id = NULL;
-        for(int column = ONE; column < tribe_size; ++column){
-            int num_of_votes = stringToInt(*(arr_votes_area_by_tribe+row*area_size+column));
-            if(num_of_votes > highest_votes){
-                highest_votes = num_of_votes;
-                highest_tribe_id = *(arr_votes_area_by_tribe+column);
-            }
-        }
-        //put area_id and tribe_id in new map. Area has the tribe with the most votes.
-        mapPut(most_voted_tribe_in_area_map, *(arr_votes_area_by_tribe+row*area_size), highest_tribe_id);
-    }
-
-    free(arr_votes_area_by_tribe);
-    return most_voted_tribe_in_area_map;
+    return computedMap;
 }
-
 
 #undef NULL_TERMINATOR
 #undef MIN_ALLOWED_LETTER
