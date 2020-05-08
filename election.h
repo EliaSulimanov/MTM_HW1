@@ -19,7 +19,8 @@ typedef enum ElectionResult_t {
     ELECTION_AREA_ALREADY_EXIST,
     ELECTION_TRIBE_NOT_EXIST,
     ELECTION_AREA_NOT_EXIST,
-    ELECTION_INVALID_VOTES
+    ELECTION_INVALID_VOTES,
+	ELECTION_ERROR
 } ElectionResult;
 
 typedef bool (*AreaConditionFunction) (int);
@@ -36,7 +37,7 @@ char* electionGetTribeName (Election election, int tribe_id);
 
 ElectionResult electionAddVote (Election election, int area_id, int tribe_id, int num_of_votes);
 
-ElectionResult electionRemoveVote (Election election, int area_id, int tribe_id, int num_of_votes);
+ElectionResult electionRemoveVote(Election election, int area_id, int tribe_id, int num_of_votes);
 
 ElectionResult electionSetTribeName (Election election, int tribe_id, const char* tribe_name);
 
@@ -47,4 +48,3 @@ ElectionResult electionRemoveAreas(Election election, AreaConditionFunction shou
 Map electionComputeAreasToTribesMapping (Election election);
 
 #endif //MTM_ELECTION_H
-
