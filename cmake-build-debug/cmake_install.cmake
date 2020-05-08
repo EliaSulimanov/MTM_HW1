@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Iron/Documents/GitHub/MTM_HW1
+# Install script for directory: C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Iron/Documents/GitHub/MTM_HW1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/ielia/Desktop/Technion/MATAM/homework/ex1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
